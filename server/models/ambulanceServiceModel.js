@@ -3,11 +3,21 @@ const mongoose = require('mongoose')
 
 const ambulanceServiceSchema = new mongoose.Schema(
     {
-        ambulanceService: {
+        type: {
             type: String,
-            name: String,
-            address: String,
-            phone: Number
+            required: false
+        },
+        name: {
+            type: String,
+            required: false
+        },
+        address: {
+            type: String,
+            required: false
+        },
+        phone: {
+            type: Number,
+            required: false
         }
     }
 )

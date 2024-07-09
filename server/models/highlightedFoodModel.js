@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 
-const touringZoneSchema = new mongoose.Schema(
+const highlightedFoodSchema = new mongoose.Schema(
     {
         type: {
             type: String,
@@ -11,19 +11,14 @@ const touringZoneSchema = new mongoose.Schema(
             type: String,
             required: false
         },
-        address: {
-            type: String,
-            required: false
-        },
-        phone: {
+        description: {
             type: Number,
             required: false
         }
-
     }
 )
 
 
-const modelName = 'TouringZone'
+const modelName = 'HighlightedFood'
 
-module.exports = mongoose.model(modelName, touringZoneSchema)
+module.exports = mongoose.model(modelName, highlightedFoodSchema)

@@ -3,10 +3,17 @@ const mongoose = require('mongoose')
 
 const marketSchema = new mongoose.Schema(
     {
-        market: {
+        type: {
             type: String,
-            name: String,
-            address: String,
+            required: false
+        },
+        name: {
+            type: String,
+            required: false
+        },
+        address: {
+            type: String,
+            required: false
         }
     }
 )

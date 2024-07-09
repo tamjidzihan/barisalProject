@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 
-const touringZoneSchema = new mongoose.Schema(
+const brandHotelSchema = new mongoose.Schema(
     {
         type: {
             type: String,
@@ -19,11 +19,10 @@ const touringZoneSchema = new mongoose.Schema(
             type: Number,
             required: false
         }
-
     }
 )
 
 
-const modelName = 'TouringZone'
+const modelName = 'BrandHotel'
 
-module.exports = mongoose.model(modelName, touringZoneSchema)
+module.exports = mongoose.model(modelName, brandHotelSchema)

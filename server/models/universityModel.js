@@ -3,13 +3,29 @@ const mongoose = require('mongoose')
 
 const universitySchema = new mongoose.Schema(
     {
-        university: {
+        type: {
             type: String,
-            name: String,
-            address: String,
-            founded: Number,
-            campus: String,
-            students: Number,
+            required: false
+        },
+        name: {
+            type: String,
+            required: false
+        },
+        address: {
+            type: String,
+            required: false
+        },
+        founded: {
+            type: Number,
+            required: false
+        },
+        campus: {
+            type: String,
+            required: false
+        },
+        students: {
+            type: Number,
+            required: false
         }
     }
 )

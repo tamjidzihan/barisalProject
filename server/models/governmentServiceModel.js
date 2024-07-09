@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 
-const touringZoneSchema = new mongoose.Schema(
+const governmentServiceSchema = new mongoose.Schema(
     {
         type: {
             type: String,
@@ -15,15 +15,18 @@ const touringZoneSchema = new mongoose.Schema(
             type: String,
             required: false
         },
-        phone: {
-            type: Number,
+        services: {
+            type: String,
+            required: false
+        },
+        website: {
+            type: String,
             required: false
         }
-
     }
 )
 
 
-const modelName = 'TouringZone'
+const modelName = 'GovernmentService'
 
-module.exports = mongoose.model(modelName, touringZoneSchema)
+module.exports = mongoose.model(modelName, governmentServiceSchema)

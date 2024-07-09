@@ -2,11 +2,21 @@ const mongoose = require('mongoose')
 
 const hospitalSchema = new mongoose.Schema(
     {
-        hospital: {
+        type: {
             type: String,
-            name: String,
-            address: String,
-            founded: Number,
+            required: false
+        },
+        name: {
+            type: String,
+            required: false
+        },
+        address: {
+            type: String,
+            required: false
+        },
+        founded: {
+            type: Number,
+            required: false
         }
     }
 )
