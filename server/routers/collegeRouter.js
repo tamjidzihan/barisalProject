@@ -14,6 +14,7 @@ router.post('/', async (req, res) => {
 });
 
 
+
 // Read all College
 router.get('/', async (req, res) => {
     const colleges = await College.find();
