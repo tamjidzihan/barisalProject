@@ -15,6 +15,10 @@ const currieerServiceSchema = new mongoose.Schema(
             type: String,
             required: false
         },
+        branch: {
+            type: String,
+            required: false
+        },
         phone: {
             type: Number,
             required: false
