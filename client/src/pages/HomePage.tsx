@@ -1,16 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Banner from '../components/Home/Banner'
+import HeroTitle from '../components/Home/HeroTitle'
+import ServiceGrid from '../components/Home/ServiceGrid'
 
 const HomePage = () => {
     return (
-        <>
-            <div className="App">
-                <h1 className="text-3xl font-bold underline">
-                    Hello world!
-                </h1>
-            </div>
-            <Link to={`test`} >test page</Link>
-        </>
+        <main>
+            <Banner />
+            <ServiceGrid />
+
+        </main>
     )
 }
 

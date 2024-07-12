@@ -18,6 +18,7 @@ const brandHotel = require('./models/brandhotelModel')
 const launchesService = require('./models/launchesServiceModel')
 const busService = require('./models/busServiceModel')
 const airService = require('./models/airserviceModel')
+const allservice = require('./models/allServiceModel')
 
 
 const generateModelRouter = require('./routers/generateModelRouter');
@@ -27,8 +28,9 @@ async function bootstrap() {
     await mongo.connect()
 
     // app.use('/auth', authRoutes)
-    app.get('/', (req, res) => res.status(200).json({ message: 'Barisal Project' }))
+    app.get('/', (req, res) => res.status(200).json({ message: 'E-Service Of Barishal' }))
 
+    app.use('/allservice', generateModelRouter(allservice))
     app.use('/university', generateModelRouter(university))
     app.use('/college', generateModelRouter(college))
     app.use('/school', generateModelRouter(school))
