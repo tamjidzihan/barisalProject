@@ -26,6 +26,7 @@ const ServicePage = () => {
                         campus={service.campus}
                         phone={service.phone}
                         students={service.students}
+                        Location={service.Location}
                     />)}
 
             </div>

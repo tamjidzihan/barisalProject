@@ -7,6 +7,7 @@ export interface Service {
     name: string;
     type: string;
     address?: string;
+    Location?:string;
     image?: string;
     campus?: string;
     founded?: number | null;

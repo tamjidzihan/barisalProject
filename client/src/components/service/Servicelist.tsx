@@ -1,6 +1,6 @@
 import { Service } from '../../Hooks/useService';
 
-const Servicelist = ({ _id, name, type, address, founded, campus, students, phone, image }: Service) => {
+const Servicelist = ({ _id, name, type, address, founded, campus, students, phone,Location, image }: Service) => {
     return (
         <>
             {/* <div className="border my-4 p-4 rounded shadow hover:shadow-lg transition duration-300">
@@ -21,6 +21,7 @@ const Servicelist = ({ _id, name, type, address, founded, campus, students, phon
                         <h5 className="mb-2 text-2xl font-bold tracking-tight hover:underline ">{name}</h5>
                         {type && <p className="mb-3 font-normal"><span className="font-semibold">Type:</span> {type}</p>}
                         {address && <p className="mb-3 font-normal"><span className="font-semibold">Address:</span> {address}</p>}
+                        {Location && <p className="mb-3 font-normal"><span className="font-semibold">Location :</span> {Location}</p>}
                         {founded && <p className="mb-3 font-normal"><span className="font-semibold">Founded:</span> {founded}</p>}
                         {campus && <p className="mb-3 font-normal"><span className="font-semibold">Campus:</span> {campus}</p>}
                         {students && <p className="mb-3 font-normal"><span className="font-semibold">Students:</span> {students}</p>}
