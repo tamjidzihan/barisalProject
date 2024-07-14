@@ -1,13 +1,14 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
-import { FetchServiceResponse } from '../../Hooks/useService'
+import { FetchAllServiceResponse } from '../../Hooks/useAllService'
+import { useServiceNameStore } from '../../stateProviders/ServiceNameStore';
 
+const ServiceCard = ({ _id, image, name, description, slug }: FetchAllServiceResponse) => {
 
+    const setServiceName = useServiceNameStore((state) => state.setServiceName)
 
-const ServiceCard = ({ _id, image, name, description, slug }: FetchServiceResponse) => {
     return (
-        <div className=" mt-9">
-            <Link to={`service/${slug}`}>
+        <div className=" mt-9" onClick={() => setServiceName(name)}>
+            <Link to={`service/${slug}`} >
                 <div className="text-center bg-[#03ab9c] pt-2 rounded-lg">
                     <div className="mx-1 bg-white rounded-lg">
                         <div className="flex justify-center items-center text-red-500 text-2xl">
@@ -17,7 +18,7 @@ const ServiceCard = ({ _id, image, name, description, slug }: FetchServiceRespon
                     </div>
                 </div>
             </Link>
-        </div>
+        </div >
     )
 }
 

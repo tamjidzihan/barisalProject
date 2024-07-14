@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import Layout from "./pages/Layout";
-import TestPage from "./pages/TestPage";
+import ServicePage from "./pages/ServicePage";
 
 
 
@@ -11,7 +11,7 @@ const router = createBrowserRouter([
         element: <Layout />,
         children: [
             { index: true, element: <HomePage /> },
-            { path: "/service/:slug", element: <TestPage /> },
+            { path: "/service/:slug", element: <ServicePage /> },
 
         ]
 

@@ -1,4 +1,4 @@
-import useService from '../../Hooks/useService';
+import useService from '../../Hooks/useAllService';
 import HeroTitle from './HeroTitle';
 import ServiceCard from './ServiceCard';
 

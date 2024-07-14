@@ -9,7 +9,6 @@ const HomePage = () => {
         <main>
             <Banner />
             <ServiceGrid />
-
         </main>
     )
 }
