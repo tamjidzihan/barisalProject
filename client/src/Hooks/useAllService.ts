@@ -5,9 +5,9 @@ import apiClint from "../services/api-clint";
 export interface FetchAllServiceResponse {
     _id: string;
     name: string;
-    description?: string;
+    description: string;
     slug?: string;
-    image?: string;
+    image: string;
 
 }
 

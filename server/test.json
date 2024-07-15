@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Universities in Barisal",
+        "type": "Education",
+        "description": " description goes Here  ",
+        "public": [
+            {
+                "type": "Public",
+                "name": "University of Barisal",
+                "address": "Barishal 8254",
+                "founded": 2011,
+                "campus": "Suburban (50 acres)",
+                "students": 7539
+            },
+            {
+                "type": "Public",
+                "name": "Patuakhali Science & Technology University (PSTU)",
+                "address": "Dumki- Patuakhali Highway, 8602",
+                "campus": "109.97 acres (44.50 ha) (including Babugonj, 12.97 acres (5.25ha))",
+                "students": 3000
+            },
+            {
+                "type": "Public",
+                "name": "Barishal Engineering College",
+                "address": "PC39+394, Barishal-Bhola Hwy",
+                "campus": "Rural, 3.6 hectares (8.9 acres)",
+                "students": 120
+            }
+        ],
+        "private": [
+            {
+                "type": "Private",
+                "name": "Global University Bangladesh",
+                "address": "",
+                "founded": null,
+                "campus": "",
+                "students": null
+            },
+            {
+                "type": "Private",
+                "name": "University of Global Village",
+                "address": "",
+                "founded": null,
+                "campus": "",
+                "students": null
+            },
+            {
+                "type": "Private",
+                "name": "Trust University, Berishal",
+                "address": "",
+                "founded": null,
+                "campus": "",
+                "students": null
+            }
+        ]
+    }
+]
