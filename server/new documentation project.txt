@@ -626,7 +626,7 @@
 	1.Panta Ilish
 
 	Description: Panta Ilish is a traditional dish made with fermented rice and Hilsa fish, often enjoyed with green chili, onion, and mustard paste.
-	Cultural Significance: This dish is particularly popular during the Bengali New Year (Pohela Boishakh).\
+	Cultural Significance: This dish is particularly popular during the Bengali New Year (Pohela Boishakh).
 
 	2.Shutki Bhorta
 
@@ -949,15 +949,16 @@
 
 
 
-**SL. No.
+**SL. No.		01.
 
-**Name of the waterway
+**Name of the waterway		MV Survi-7 (M 15285)
 
 **Name and M No. of the vessel
 
-**Travel schedule
+**Travel schedule 2100
 
-**Contact address and mobile number:
+**Contact address : 	M/s. Survi navigation Co. parara Road, Barishal.
+**mobile number:     01712-772786
 
 
 	01.

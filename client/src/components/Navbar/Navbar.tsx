@@ -66,6 +66,7 @@ const Navbar = () => {
                                         <Link to="/" className="block px-4 py-2 text-gray-700 hover:bg-gray-300">Travel and Tourism</Link>
                                         <Link to="/" className="block px-4 py-2 text-gray-700 hover:bg-gray-300">Entertainment</Link>
                                         <Link to="/" className="block px-4 py-2 text-gray-700 hover:bg-gray-300">Health</Link>
+                                        <Link to="/" className="block px-4 py-2 text-gray-700 hover:bg-gray-300">Others</Link>
                                     </div>
                                 )}
                             </div>

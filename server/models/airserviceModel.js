@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 
-const airServiceSchema = new mongoose.Schema(
+const airServiceDetailSchema = new mongoose.Schema(
     {
         type: {
             type: String,
@@ -21,6 +21,28 @@ const airServiceSchema = new mongoose.Schema(
         }
     }
 )
+
+
+const airServiceSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    type: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String,
+        required: false
+    },
+    description: {
+        type: String,
+        required: false
+    },
+    result: [airServiceDetailSchema]
+});
+
 
 
 const modelName = 'AirService'

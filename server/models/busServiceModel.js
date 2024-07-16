@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 
-const busServiceSchema = new mongoose.Schema(
+const busServiceDetailSchema = new mongoose.Schema(
     {
         type: {
             type: String,
@@ -11,7 +11,11 @@ const busServiceSchema = new mongoose.Schema(
             type: String,
             required: false
         },
-        contact: {
+        image: {
+            type: String,
+            required: false
+        },
+        phone: {
             type: String,
             required: false
         },
@@ -21,6 +25,28 @@ const busServiceSchema = new mongoose.Schema(
         }
     }
 )
+
+
+const busServiceSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    type: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String,
+        required: false
+    },
+    description: {
+        type: String,
+        required: false
+    },
+    result: [busServiceDetailSchema]
+});
+
 
 
 const modelName = 'BusService'

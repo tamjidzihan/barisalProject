@@ -1,13 +1,17 @@
 const mongoose = require('mongoose')
 
 
-const governmentServiceSchema = new mongoose.Schema(
+const governmentServiceDetailSchema = new mongoose.Schema(
     {
         type: {
             type: String,
             required: false
         },
         name: {
+            type: String,
+            required: false
+        },
+        image: {
             type: String,
             required: false
         },
@@ -25,6 +29,26 @@ const governmentServiceSchema = new mongoose.Schema(
         }
     }
 )
+
+const governmentServiceSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    type: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String,
+        required: false
+    },
+    description: {
+        type: String,
+        required: false
+    },
+    result: [governmentServiceDetailSchema]
+});
 
 
 const modelName = 'GovernmentService'

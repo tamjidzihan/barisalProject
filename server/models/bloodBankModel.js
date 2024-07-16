@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 
-const bloodbankSchema = new mongoose.Schema(
+const bloodbankDetailSchema = new mongoose.Schema(
     {
         type: {
             type: String,
@@ -11,16 +11,40 @@ const bloodbankSchema = new mongoose.Schema(
             type: String,
             required: false
         },
+        image: {
+            type: String,
+            required: false
+        },
         address: {
             type: String,
             required: false
         },
         phone: {
-            type: Number,
+            type: String,
             required: false
         }
     }
 )
+
+const bloodbankSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    type: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String,
+        required: false
+    },
+    description: {
+        type: String,
+        required: false
+    },
+    result: [bloodbankDetailSchema]
+});
 
 
 const modelName = 'BloodBank'

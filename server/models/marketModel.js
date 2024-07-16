@@ -1,13 +1,20 @@
 const mongoose = require('mongoose')
 
-
-const marketSchema = new mongoose.Schema(
+const marketDetailSchema = new mongoose.Schema(
     {
         type: {
             type: String,
             required: false
         },
         name: {
+            type: String,
+            required: false
+        },
+        image: {
+            type: String,
+            required: false
+        },
+        phone: {
             type: String,
             required: false
         },
@@ -18,6 +25,25 @@ const marketSchema = new mongoose.Schema(
     }
 )
 
+const marketSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    type: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String,
+        required: false
+    },
+    description: {
+        type: String,
+        required: false
+    },
+    result: [marketDetailSchema]
+});
 
 const modelName = 'Market'
 

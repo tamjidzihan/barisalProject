@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 
-const collegeSchema = new mongoose.Schema({
+const collegeDetailSchema = new mongoose.Schema({
     type: {
         type: String,
         required: false
@@ -10,7 +10,27 @@ const collegeSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    image: {
+        type: String,
+        required: false
+    },
     address: {
+        type: String,
+        required: false
+    },
+    phone: {
+        type: String,
+        required: false
+    },
+    email: {
+        type: String,
+        required: false
+    },
+    website: {
+        type: String,
+        required: false
+    },
+    campus: {
         type: String,
         required: false
     },
@@ -27,8 +47,27 @@ const collegeSchema = new mongoose.Schema({
         required: false
     }
 
-})
+});
 
+const collegeSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    type: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String,
+        required: false
+    },
+    description: {
+        type: String,
+        required: false
+    },
+    result: [collegeDetailSchema]
+});
 
 const modelName = 'College'
 

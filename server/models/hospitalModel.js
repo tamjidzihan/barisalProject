@@ -1,12 +1,20 @@
 const mongoose = require('mongoose')
 
-const hospitalSchema = new mongoose.Schema(
+const hospitalDetailSchema = new mongoose.Schema(
     {
         type: {
             type: String,
             required: false
         },
         name: {
+            type: String,
+            required: false
+        },
+        image: {
+            type: String,
+            required: false
+        },
+        phone: {
             type: String,
             required: false
         },
@@ -20,6 +28,26 @@ const hospitalSchema = new mongoose.Schema(
         }
     }
 )
+
+const hospitalSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    type: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String,
+        required: false
+    },
+    description: {
+        type: String,
+        required: false
+    },
+    result: [hospitalDetailSchema]
+});
 
 
 const modelName = 'Hospital'

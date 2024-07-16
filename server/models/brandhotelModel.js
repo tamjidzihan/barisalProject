@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 
-const brandHotelSchema = new mongoose.Schema(
+const brandHotelDetailSchema = new mongoose.Schema(
     {
         type: {
             type: String,
@@ -11,17 +11,41 @@ const brandHotelSchema = new mongoose.Schema(
             type: String,
             required: false
         },
+        image: {
+            type: String,
+            required: false
+        },
         address: {
             type: String,
             required: false
         },
         phone: {
-            type: Number,
+            type: String,
             required: false
         }
     }
 )
 
+
+const brandHotelSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    type: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String,
+        required: false
+    },
+    description: {
+        type: String,
+        required: false
+    },
+    result: [brandHotelDetailSchema]
+});
 
 const modelName = 'BrandHotel'
 
