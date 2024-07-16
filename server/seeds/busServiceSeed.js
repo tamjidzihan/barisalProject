@@ -41,6 +41,10 @@ const busServiceSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    slug: {
+        type: String,
+        required: true
+    },
     image: {
         type: String,
         required: false
@@ -59,6 +63,7 @@ const BusService = mongoose.model('BusService', busServiceSchema);
 const busServiceData = {
     name: "Bus Service in Barisal",
     type: "Travel and Tourism",
+    slug: "busservice",
     image: "", // Add URL for image if available
     description: "List of Bus Service of Barisal",
     result: [

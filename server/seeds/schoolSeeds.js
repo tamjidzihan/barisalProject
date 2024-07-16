@@ -51,6 +51,10 @@ const schoolSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    slug: {
+        type: String,
+        required: true
+    },
     image: {
         type: String,
         required: false
@@ -67,6 +71,7 @@ const School = mongoose.model('School', schoolSchema);
 const schoolsData = {
     name: "Schools in Barisal",
     type: "Education",
+    slug: "school",
     image: "", // Add the URL for the main image if available
     description: "Description goes here",
     result: [

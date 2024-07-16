@@ -41,6 +41,10 @@ const marketSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    slug: {
+        type: String,
+        required: true
+    },
     image: {
         type: String,
         required: false
@@ -57,6 +61,7 @@ const Market = mongoose.model('Market', marketSchema);
 const marketData = {
     name: "Markets and Shopping Malls in Barisal",
     type: "Entertainment",
+    slug: "market",
     image: "", // Add the URL for the main image if available
     description: "List of markets and shopping malls in Barisal",
     result: [

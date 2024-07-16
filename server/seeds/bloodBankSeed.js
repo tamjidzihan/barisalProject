@@ -43,6 +43,10 @@ const bloodbankSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    slug: {
+        type: String,
+        required: true
+    },
     image: {
         type: String,
         required: false
@@ -61,6 +65,7 @@ const BloodBankServices = mongoose.model('BloodBank', bloodbankSchema);
 const bloodBankData = {
     name: "Blood Bank Services in Barisal",
     type: "Health",
+    slug: "bloodbank",
     image: "", // Add URL for image if available
     description: "List of Blood Bank Services in Barisal",
     result: [

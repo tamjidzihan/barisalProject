@@ -42,6 +42,10 @@ const companySchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    slug: {
+        type: String,
+        required: true
+    },
     image: {
         type: String,
         required: false
@@ -59,6 +63,7 @@ const companieyData = {
     name: "Companies in Barisal",
     type: "Job",
     image: "", // Add URL for image if available
+    slug: "company",
     description: "List of Companies in Barisal",
     result: [
         {

@@ -49,6 +49,10 @@ const barServiceSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    slug: {
+        type: String,
+        required: true
+    },
     description: {
         type: String,
         required: false
@@ -64,6 +68,7 @@ const barServiceData = {
     name: "BAR Service in Barisal",
     type: "Travel and Tourism",
     image: "", // Add URL for image if available
+    slug: "barservice",
     description: "List of BAR Service of Barisal",
     result: [
         {

@@ -46,6 +46,10 @@ const ambulanceServiceSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    slug: {
+        type: String,
+        required: true
+    },
     description: {
         type: String,
         required: false
@@ -59,6 +63,7 @@ const ambulanceData = {
     name: "Ambulance Services in Barisal",
     type: "Health",
     image: "", // Add URL for image if available
+    slug: "ambulanceservice",
     description: "List of ambulance services in Barisal",
     result: [
         {

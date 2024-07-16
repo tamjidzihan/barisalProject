@@ -41,6 +41,10 @@ const highlightedFoodSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    slug: {
+        type: String,
+        required: true
+    },
     description: {
         type: String,
         required: false
@@ -55,6 +59,7 @@ const HighlightedFood = mongoose.model('HighlightedFood', highlightedFoodSchema)
 const highlightedFoodData = {
     name: "Highlighted Food of Barisal",
     type: "Travel and Tourism",
+    slug: 'highlightedFood',
     image: "", // Add URL for image if available
     description: "List of Highlighted Food of Barisal",
     result: [

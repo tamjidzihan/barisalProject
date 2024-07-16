@@ -41,6 +41,10 @@ const brandHotelSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    slug: {
+        type: String,
+        required: true
+    },
     image: {
         type: String,
         required: false
@@ -59,6 +63,7 @@ const BrandHotel = mongoose.model('BrandHotel', brandHotelSchema);
 const brandHotelData = {
     name: "Brand Hotel Service in Barisal",
     type: "Travel and Tourism",
+    slug: "brandhotel",
     image: "", // Add URL for image if available
     description: "List of Brand Hotel Service of Barisal",
     result: [

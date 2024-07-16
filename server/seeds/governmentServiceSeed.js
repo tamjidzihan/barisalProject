@@ -47,6 +47,10 @@ const governmentServiceSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    slug: {
+        type: String,
+        required: true
+    },
     image: {
         type: String,
         required: false
@@ -65,6 +69,7 @@ const GovernmentService = mongoose.model('GovernmentService', governmentServiceS
 const governmentServicesData = {
     name: "Government Services in Barisal",
     type: "Job",
+    slug: "governmentservice",
     image: "", // Add URL for image if available
     description: "List of Government Services in Barisal",
     result: [

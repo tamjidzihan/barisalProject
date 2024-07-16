@@ -47,6 +47,10 @@ const currieerServiceSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    slug: {
+        type: String,
+        required: true
+    },
     image: {
         type: String,
         required: false
@@ -66,6 +70,7 @@ const CurrieerService = mongoose.model('CurrieerService', currieerServiceSchema)
 const courierServicesData = {
     name: "Courier Services in Barisal",
     type: "Others",
+    slug: "courierservices",
     image: "", // Add URL for image if available
     description: "List of Courier Services in Barisal",
     result: [

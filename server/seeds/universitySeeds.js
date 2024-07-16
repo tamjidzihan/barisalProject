@@ -21,6 +21,7 @@ const universityDetailSchema = new mongoose.Schema({
 const universitySchema = new mongoose.Schema({
     name: { type: String, required: true },
     type: { type: String, required: true },
+    slug: { type: String, required: true },
     image: { type: String, required: false },
     description: { type: String, required: false },
     result: [universityDetailSchema]
@@ -31,6 +32,7 @@ const University = mongoose.model('University', universitySchema);
 const universityData = {
     name: "Universities in Barisal",
     type: "Education",
+    slug: "university",
     image: "", // Add the URL for the main image if available
     description: "description goes Here",
     result: [

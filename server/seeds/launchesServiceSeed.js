@@ -43,6 +43,10 @@ const launchesServiceSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    slug: {
+        type: String,
+        required: true
+    },
     image: {
         type: String,
         required: false
@@ -60,6 +64,7 @@ const LaunchesService = mongoose.model('LaunchesService', launchesServiceSchema)
 const launchesServiceData = {
     name: "Launches Service in Barisal",
     type: "Travel and Tourism",
+    slug: "launchesservice",
     image: "", // Add URL for image if available
     description: "List of Launches Service of Barisal",
     result: [

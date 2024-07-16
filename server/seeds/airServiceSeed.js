@@ -37,6 +37,10 @@ const airServiceSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    slug: {
+        type: String,
+        required: true
+    },
     image: {
         type: String,
         required: false
@@ -56,6 +60,7 @@ const airServiceData = {
     name: "Air Service in Barisal",
     type: "Travel and Tourism",
     image: "", // Add URL for image if available
+    slug: 'airservice',
     description: "List of Air Service of Barisal",
     result: [
         {

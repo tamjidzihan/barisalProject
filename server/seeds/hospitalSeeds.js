@@ -45,6 +45,10 @@ const hospitalSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    slug: {
+        type: String,
+        required: true
+    },
     image: {
         type: String,
         required: false
@@ -62,6 +66,7 @@ const Hospital = mongoose.model('Hospital', hospitalSchema);
 const hospitalData = {
     name: "Hospitals in Barisal",
     type: "Health",
+    slug: "hospital",
     image: "", // Add URL for image if available
     description: "Description goes here",
     result: [

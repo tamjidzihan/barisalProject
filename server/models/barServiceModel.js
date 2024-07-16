@@ -43,6 +43,10 @@ const barServiceSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    slug: {
+        type: String,
+        required: true
+    },
     description: {
         type: String,
         required: false

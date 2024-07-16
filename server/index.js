@@ -15,7 +15,7 @@ const models = {
     school: require('./models/schoolModel'),//
     touringzone: require('./models/touringZoneModel'),//
     governmentservice: require('./models/governmentServiceModel'),//
-    courierservice: require('./models/currieerServiceModel'),//
+    currieerservices: require('./models/currieerServiceModel'),//
     bloodbank: require('./models/bloodBankModel'),//
     highlightedFood: require('./models/highlightedFoodModel'),//
     barservice: require('./models/barServiceModel'),//
@@ -36,15 +36,15 @@ async function bootstrap() {
     });
 
     // All service specific route
-    app.use('/allservice/:model', (req, res, next) => {
-        const modelName = req.params.model;
-        const Model = models[modelName];
-        if (Model) {
-            generateModelRouter(Model)(req, res, next);
-        } else {
-            res.status(404).json({ error: 'Model not found' });
-        }
-    });
+    // app.use('/allservice/:model', (req, res, next) => {
+    //     const modelName = req.params.model;
+    //     const Model = models[modelName];
+    //     if (Model) {
+    //         generateModelRouter(Model)(req, res, next);
+    //     } else {
+    //         res.status(404).json({ error: 'Model not found' });
+    //     }
+    // });
 
     app.listen(PORT, () => {
         console.log(`✅ Server is listening on port: ${PORT}`);

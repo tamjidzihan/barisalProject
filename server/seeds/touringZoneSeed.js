@@ -42,6 +42,10 @@ const touringZoneSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    slug: {
+        type: String,
+        required: true
+    },
     image: {
         type: String,
         required: false
@@ -58,6 +62,7 @@ const TouringZone = mongoose.model('TouringZone', touringZoneSchema);
 const touringZoneData = {
     name: "TouringZones in Barisal",
     type: "Entertainment",
+    slug: "touringzone",
     image: "", // Add URL for image if available
     description: "List of TouringZones in Barisal",
     result: [
