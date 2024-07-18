@@ -39,14 +39,15 @@ const Navbar = () => {
         };
     }, [dropdownOpen]);
 
+
     return (
-        <nav className="bg-[#8a173f] ">
+        <nav className="bg-[#8a173f] sticky top-0 z-10">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     <div className="flex items-center">
                         <div className="flex-shrink-0">
                             <Link to='/' className="flex justify-center items-center gap-2">
-                                <img className="w-20" src={logo} alt="" />
+                                <img className="w-[7rem]" src={logo} alt="" />
                             </Link>
                         </div>
                     </div>

@@ -1,9 +1,52 @@
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { Service } from '../../Hooks/useService';
 
-const Servicelist = ({ _id, name, type, address, founded, campus, students, phone, image, contact, location, description, destinations }: Service) => {
+interface ServiceUse extends Service {
+    mainServiceID: string;
+    mainServiceSlug: string | undefined;
+}
+
+const Servicelist = ({ _id, mainServiceID, mainServiceSlug, name, type, }: ServiceUse) => {
     return (
-        <>
-            <a href="#" className=" bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl   h-80 md:h-[15rem] lg:h-[20rem]">
+        <div className="flex flex-col gap-4 items-center justify-center mb-4">
+            {/* <!-- Card 1 --> */}
+            <motion.div
+                whileHover={{ scale: 1.05, boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.1)' }}
+                transition={{ duration: 0.3 }}
+            >
+                <Link to={`/service/${mainServiceSlug}/${mainServiceID}/${_id}`} className="bg-gradient-to-r from-[#9be2dc] to-[#f1d7e0] rounded-lg w-70 grid grid-cols-12 shadow p-4 gap-3 items-center transform border-s-[1rem] border-[#0b635b]">
+                    {/* <!-- Icon --> */}
+                    <div className="col-span-12 md:col-span-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="#2563eb">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+                        </svg>
+                    </div>
+
+                    {/* <!-- Title --> */}
+                    <div className="col-span-11 xl:-ml-5">
+                        <p className="text-red-800 text-xl font-semibold">{name}</p>
+                    </div>
+
+                    {/* <!-- Description --> */}
+                    <div className="md:col-start-2 col-span-11 xl:-ml-5 w-[15rem] md:w-[14rem] lg:w-[50rem]">
+                        <p className="text-sm text-blue-600 font-light">{type}</p>
+                    </div>
+                </Link>
+            </motion.div>
+        </div>
+    );
+};
+
+export default Servicelist;
+
+
+
+
+
+
+
+{/* <span className=" bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl h-80 md:h-[15rem] lg:h-[20rem]">
                 <div className="py-8 w-full hover:bg-gray-100 ">
                     <div className="lg:flex items-center justify-center w-full">
                         <div className="lg:w-4/12 lg:mr-7 lg:mb-0 mb-7 bg-white p-6 shadow rounded">
@@ -11,7 +54,9 @@ const Servicelist = ({ _id, name, type, address, founded, campus, students, phon
                                 <img src={image || "https://picsum.photos/id/870/200/300?grayscale&blur=2"} alt={name} className="w-24 h-12  rounded-2xl  " />
                                 <div className="flex items-start justify-between w-full ">
                                     <div className="pl-3 w-full">
-                                        <p className="text-xl font-medium leading-5 text-gray-800 hover:underline">{name}</p>
+                                        <Link to={`/service/${mainServiceSlug}/${mainServiceID}/${_id}`}>
+                                            <p className="text-xl font-medium leading-5 text-gray-800 hover:underline">{name}</p>
+                                        </Link>
                                         <p className="text-sm leading-normal pt-2 text-gray-500">{type}</p>
                                     </div>
                                     <svg width={28} height={28} viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -37,26 +82,4 @@ const Servicelist = ({ _id, name, type, address, founded, campus, students, phon
 
                     </div>
                 </div>
-            </a>
-
-            {/* <div className=' flex-initial flex-wrap mt-10'>
-                <a href="#" className="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-300  dark:hover:bg-gray-100 h-80 md:h-[15rem] lg:h-[20rem]">
-                    <img className="object-cover rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="/docs/images/blog/image-4.jpg" alt="" />
-                    <div className="flex flex-col justify-between p-4 leading-normal">
-                        <h5 className="mb-2 text-2xl font-bold tracking-tight hover:underline ">{name}</h5>
-                        {type && <p className="mb-3 font-normal"><span className="font-semibold">Type:</span> {type}</p>}
-                        {address && <p className="mb-3 font-normal"><span className="font-semibold">Address:</span> {address}</p>}
-                        {founded && <p className="mb-3 font-normal"><span className="font-semibold">Founded:</span> {founded}</p>}
-                        {campus && <p className="mb-3 font-normal"><span className="font-semibold">Campus:</span> {campus}</p>}
-                        {students && <p className="mb-3 font-normal"><span className="font-semibold">Students:</span> {students}</p>}
-                        {phone && <p className="mb-3 font-normal"><span className="font-semibold">Phone:</span> {phone}</p>}
-                        {contact && <p className="mb-3 font-normal"><span className="font-semibold">Contact:</span> {contact}</p>}
-                        {location && <p className="mb-3 font-normal"><span className="font-semibold">Location:</span> {location}</p>}
-                    </div>
-                </a>
-            </div> */}
-        </>
-    );
-};
-
-export default Servicelist;
+            </span > */}

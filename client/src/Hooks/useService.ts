@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import apiClint from "../services/api-clint"
+import { CanceledError } from "axios";
 
 
 export interface Service {
@@ -30,20 +31,29 @@ export interface FetchServicelistResponse {
 }
 
 const useService = (slug: string) => {
-
     const [serviceList, setServiceList] = useState<FetchServicelistResponse[]>([])
+    const [error, setError] = useState<string>('');
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
 
 
     useEffect(() => {
+        const controller = new AbortController();
+        setIsLoading(true);
         apiClint
             .get<FetchServicelistResponse[]>(`/${slug}`)
             .then(res => {
                 setServiceList(res.data)
+                setIsLoading(false);
             })
-            .catch(err => console.error(err));
+            .catch((err) => {
+                if (err instanceof CanceledError) return;
+                setError(err.message);
+                setIsLoading(false);
+            });
+        return () => controller.abort();
     }, [])
-    return { serviceList }
+    return { serviceList, error, isLoading }
 }
 
 export default useService;

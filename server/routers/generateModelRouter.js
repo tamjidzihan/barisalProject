@@ -77,6 +77,8 @@ function generateModelRouter(Model) {
         }
     });
 
+
+
     // Add a new nested document in 'result'
     router.post('/:id/service', async (req, res) => {
         try {
@@ -91,6 +93,25 @@ function generateModelRouter(Model) {
             res.status(400).send(error);
         }
     });
+
+
+    // Get nested document in 'result' by ID
+    router.get('/:id/service/:resultId', async (req, res) => {
+        try {
+            const document = await Model.findById(req.params.id);
+            if (!document) {
+                return res.status(404).send();
+            }
+            const result = document.result.id(req.params.resultId);
+            if (!result) {
+                return res.status(404).send();
+            }
+            res.json(result);
+        } catch (error) {
+            res.status(400).send(error);
+        }
+    });
+
 
     // Update a nested document in 'result' by ID
     router.put('/:id/service/:resultId', async (req, res) => {
