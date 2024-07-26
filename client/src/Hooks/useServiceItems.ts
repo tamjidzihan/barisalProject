@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Service } from './useService'
 import apiClint from '../services/api-clint'
 

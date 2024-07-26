@@ -2,6 +2,7 @@ const app = require('./utils/app'); // Backend App (server)
 const mongo = require('./utils/mongo'); // MongoDB (database)
 const { PORT } = require('./constants');
 const generateModelRouter = require('./routers/generateModelRouter');
+const authRoutes = require('./routers/auth')
 
 const models = {
     allservice: require('./models/allServiceModel'),
@@ -34,6 +35,9 @@ async function bootstrap() {
     Object.keys(models).forEach(modelName => {
         app.use(`/${modelName}`, generateModelRouter(models[modelName]));
     });
+
+
+    app.use('/auth', authRoutes)
 
     app.listen(PORT, () => {
         console.log(`✅ Server is listening on port: ${PORT}`);

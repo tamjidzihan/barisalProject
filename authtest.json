@@ -1,0 +1,26 @@
+[
+    {
+        "message": "Succesfully registered",
+        "data": {
+            "username": "tamjidzihan",
+            "role": "user",
+            "_id": "66a225b411443356c651e6b7",
+            "createdAt": "2024-07-25T10:15:16.497Z",
+            "updatedAt": "2024-07-25T10:15:16.497Z",
+            "__v": 0
+        },
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NmEyMjViNDExNDQzMzU2YzY1MWU2YjciLCJyb2xlIjoidXNlciIsImlhdCI6MTcyMTkwMjUxNiwiZXhwIjoxNzIxOTQ1NzE2fQ.c2Vv8omuf4Nc_PSYX7DOH0P6Pqdn_NLJoHTfIHFT6FU"
+    },
+    {
+        "message": "Succesfully logged-in",
+        "data": {
+            "_id": "66a225b411443356c651e6b7",
+            "username": "tamjidzihan",
+            "role": "user",
+            "createdAt": "2024-07-25T10:15:16.497Z",
+            "updatedAt": "2024-07-25T10:15:16.497Z",
+            "__v": 0
+        },
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NmEyMjViNDExNDQzMzU2YzY1MWU2YjciLCJyb2xlIjoidXNlciIsImlhdCI6MTcyMTkwMjY0NywiZXhwIjoxNzIxOTQ1ODQ3fQ.OVGp4Wnj2oG17MFnScRIN6Lv9rFYln--vKHig9SaEmE"
+    }
+]

@@ -1,6 +1,6 @@
 import axios from "axios";
-import { apiURL } from "../constants/utils";
+import { BACKEND_URL } from "../constants/utils";
 
 export default axios.create({
-    baseURL: apiURL
+    baseURL: BACKEND_URL
 })
