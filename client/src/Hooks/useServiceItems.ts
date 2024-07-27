@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Service } from './useService'
-import apiClint from '../services/api-clint'
+import apiClint from '../services/api-client'
 
 const useServiceItems = (mainServiceSlug: string, mainServiceID: string, itemID: string) => {
     const [serviceItem, setServiceItem] = useState<Service>()

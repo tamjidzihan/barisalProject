@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Service } from '../../Hooks/useService';
+import { FaFileCircleCheck } from "react-icons/fa6";
 
 interface ServiceUse extends Service {
     mainServiceID: string;
@@ -17,10 +18,8 @@ const Servicelist = ({ _id, mainServiceID, mainServiceSlug, name, type, }: Servi
             >
                 <Link to={`/service/${mainServiceSlug}/${mainServiceID}/${_id}`} className="bg-gradient-to-r from-[#9be2dc] to-[#f1d7e0] rounded-lg w-70 grid grid-cols-12 shadow p-4 gap-3 items-center transform border-s-[1rem] border-[#0b635b]">
                     {/* <!-- Icon --> */}
-                    <div className="col-span-12 md:col-span-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="#2563eb">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
-                        </svg>
+                    <div className="col-span-12 md:col-span-1 text-4xl text-indigo-500 text-center">
+                        <FaFileCircleCheck />
                     </div>
 
                     {/* <!-- Title --> */}

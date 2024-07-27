@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { CanceledError } from "axios";
-import apiClint from "../services/api-clint";
+import apiClint from "../services/api-client";
 
 export interface FetchAllServiceResponse {
     _id: string;
