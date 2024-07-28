@@ -1,39 +1,70 @@
-import { useParams } from 'react-router-dom'
-import useServiceItems from '../../Hooks/useServiceItems'
-import { motion } from 'framer-motion'
+import { useParams } from 'react-router-dom';
+import useServiceItems from '../../Hooks/useServiceItems';
+import { FaChevronRight } from "react-icons/fa6";
+import { motion } from 'framer-motion';
 
 const ServiceItems = () => {
-    const { mainServiceSlug, mainServiceID, id } = useParams()
-    const { serviceItem } = useServiceItems(mainServiceSlug!, mainServiceID!, id!)
+    const { mainServiceSlug, mainServiceID, id } = useParams();
+    const { serviceItem } = useServiceItems(mainServiceSlug!, mainServiceID!, id!);
+
+    const serviceDetails = [
+        { label: "Branch", value: serviceItem?.branch },
+        { label: "Address", value: serviceItem?.address },
+        { label: "Campus", value: serviceItem?.campus },
+        { label: "Contact", value: serviceItem?.contact },
+        { label: "Description", value: serviceItem?.description },
+        { label: "Destinations", value: serviceItem?.destinations },
+        { label: "Founded", value: serviceItem?.founded },
+        { label: "Location", value: serviceItem?.location },
+        { label: "Students", value: serviceItem?.students },
+        { label: "Phone", value: serviceItem?.phone }
+    ];
 
     return (
-        <div className="flex flex-col gap-4 items-center justify-center mb-4">
-            {/* <!-- Card 1 --> */}
-            <motion.div
-                whileHover={{ scale: 1.05, boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.1)' }}
-                transition={{ duration: 0.3 }}
-            >
-                <span className="bg-gradient-to-r from-[#9be2dc] to-[#f1d7e0] rounded-lg w-70 grid grid-cols-12 shadow p-4 gap-3 items-center transform border-s-[1rem] border-[#0b635b]">
-                    {/* <!-- Icon --> */}
-                    <div className="col-span-12 md:col-span-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="#2563eb">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
-                        </svg>
+        <>
+            <div className="bg-gradient-to-b from-[#8a173f] to-[#03ab9c] h-60 md:h-[15rem] lg:h-[10rem] rounded-b-full flex flex-col justify-center items-center">
+                <p className="text-white text-center px-4 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold">
+                    {serviceItem?.name}
+                </p>
+            </div>
+            <div className="flex flex-col gap-6 items-center justify-center mt-12 px-4">
+                <motion.div
+                    whileHover={{ scale: 1.05, boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.1)' }}
+                    transition={{ duration: 0.3 }}
+                    className="bg-gradient-to-r from-[#9be2dc] to-[#f1d7e0] rounded-lg shadow-md w-full max-w-4xl p-6"
+                >
+                    <div className="grid grid-cols-12 gap-4 items-center">
+                        <div className="col-span-12 md:col-span-2 flex justify-center text-[#0b635b] text-7xl">
+                            <FaChevronRight />
+                        </div>
+                        {serviceItem?.image && (
+                            <div className="col-span-12 md:col-span-12 flex justify-center">
+                                <img
+                                    src={serviceItem.image}
+                                    alt={`${serviceItem.name} image`}
+                                    className="rounded-lg max-w-full h-auto"
+                                />
+                            </div>
+                        )}
+                        <div className="col-span-12 md:col-span-10">
+                            {serviceDetails.map((detail, index) => detail.value && (
+                                <div key={index} className="py-2">
+                                    <p className="text-gray-700 text-lg md:text-xl font-semibold">
+                                        <span className="text-blue-600">{detail.label}:</span> {detail.value}
+                                    </p>
+                                </div>
+                            ))}
+                            {serviceItem?.type && (
+                                <div className="py-2">
+                                    <p className="text-md text-blue-600 font-light">Type: {serviceItem?.type}</p>
+                                </div>
+                            )}
+                        </div>
                     </div>
+                </motion.div>
+            </div>
+        </>
+    );
+};
 
-                    {/* <!-- Title --> */}
-                    <div className="col-span-11 xl:-ml-5">
-                        <p className="text-red-800 text-xl font-semibold">{serviceItem?.name}</p>
-                    </div>
-
-                    {/* <!-- Description --> */}
-                    <div className="md:col-start-2 col-span-11 xl:-ml-5 w-[15rem] md:w-[14rem] lg:w-[50rem]">
-                        <p className="text-sm text-blue-600 font-light">{serviceItem?.type}</p>
-                    </div>
-                </span>
-            </motion.div>
-        </div>
-    )
-}
-
-export default ServiceItems
+export default ServiceItems;
