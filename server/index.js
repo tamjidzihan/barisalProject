@@ -2,6 +2,7 @@ const app = require('./utils/app'); // Backend App (server)
 const mongo = require('./utils/mongo'); // MongoDB (database)
 const { PORT } = require('./constants');
 const generateModelRouter = require('./routers/generateModelRouter');
+const { authorizeBearerToken, authorizeAdmin } = require('./middlewares/jsonwebtoken');
 const authRoutes = require('./routers/auth')
 
 const models = {
@@ -34,6 +35,10 @@ async function bootstrap() {
     // General model routes
     Object.keys(models).forEach(modelName => {
         app.use(`/${modelName}`, generateModelRouter(models[modelName]));
+    });
+
+    Object.keys(models).forEach(modelName => {
+        app.use(`/${modelName}`, authorizeBearerToken, authorizeAdmin, generateModelRouter(models[modelName]));
     });
 
 

@@ -2,18 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import { FaSignInAlt } from 'react-icons/fa';
 import { FaUser } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
+import { Account } from '../../context/AuthContext';
 
-
-
-interface Account {
-    username: string;
-    role: 'user' | 'admin';
-}
 
 interface UserStatusProps {
     logout: () => void
     isLoggedIn: boolean
-    account: Account
+    account: Account | null
 }
 
 
@@ -62,7 +57,7 @@ const UserStatus = ({ logout, isLoggedIn, account }: UserStatusProps) => {
                     {dropdownOpenUser && (
                         <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
                             <Link to="/" className="block px-4 py-2 text-gray-700 hover:bg-gray-300">{account?.username}</Link>
-                            {account?.role === "admin" && <Link to="/" className="block px-4 py-2 text-gray-700 hover:bg-gray-300">{account?.role}</Link>}
+                            {account?.role === "admin" && <Link to="/" className="block px-4 py-2 text-gray-700 hover:bg-gray-300">{account?.role} panel</Link>}
                             <button onClick={handleLogout} className="w-full px-4 py-2 text-gray-700 hover:bg-gray-300 flex justify-start items-center gap-3">
                                 Logout <FaSignInAlt />
                             </button>

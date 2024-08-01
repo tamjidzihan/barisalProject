@@ -33,7 +33,7 @@ const ServicesMenu = () => {
     return (
         <>
             <div className="relative" ref={dropdownRefServices}>
-                <button onClick={toggleDropdownServices} className="text-white hover:bg-white/70 hover:text-black rounded-lg p-2 flex justify-center items-center gap-1">
+                <button onClick={toggleDropdownServices} className="text-white hover:bg-white hover:text-black rounded-lg p-2 flex justify-start items-center gap-1">
                     <FaGears />Services
                 </button>
                 {dropdownOpenServices && (

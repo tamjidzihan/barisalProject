@@ -8,7 +8,6 @@ export interface FetchAllServiceResponse {
     description: string;
     slug?: string;
     image: string;
-
 }
 
 const useAllService = () => {

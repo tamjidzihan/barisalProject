@@ -32,7 +32,19 @@ const authorizeBearerToken = (request, response, next) => {
   }
 }
 
+
+const authorizeAdmin = (request, response, next) => {
+  if (request.auth && request.auth.role === 'admin') {
+    next();
+  } else {
+    return response.status(403).json({
+      message: 'Forbidden - Admins only',
+    });
+  }
+};
+
 module.exports = {
+  authorizeAdmin,
   authorizeBearerToken,
   signToken,
 }

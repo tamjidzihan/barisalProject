@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { useAuth } from '../../Hooks/useAuth';
+import { useAuth } from '../../context/AuthContext'; // Adjust the path as necessary
 import { Link, useNavigate } from 'react-router-dom';
-import apiClient from '../../services/api-client';
 
 const Login: React.FC = () => {
     const { login } = useAuth();
@@ -19,7 +18,6 @@ const Login: React.FC = () => {
         try {
             await login({ username, password });
             navigate('/');
-
         } catch (err) {
             setError(err as string);
         } finally {
@@ -62,9 +60,8 @@ const Login: React.FC = () => {
                     >
                         {loading ? 'Logging in...' : 'Login'}
                     </button>
-
-                    <div className='text-center'>
-                        <Link to={'/registration'} className="text-red-500 text-md hover:underline ">I don't have an account</Link>
+                    <div className="text-center">
+                        <Link to="/registration" className="text-red-500 text-md hover:underline">I don't have an account</Link>
                     </div>
                 </form>
             </div>
