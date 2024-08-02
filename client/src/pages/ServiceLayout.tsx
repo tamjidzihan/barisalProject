@@ -6,7 +6,7 @@ import LoadingSpinner from '../components/Home/LoadingSpinner'
 
 const ServiceLayout = () => {
     const { slug } = useParams()
-    const { serviceList, error, isLoading } = useService(slug as string)
+    const { serviceList, isLoading } = useService(slug as string)
 
 
     if (isLoading) return <LoadingSpinner />;
