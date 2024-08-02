@@ -91,10 +91,10 @@ const ServiceItems = () => {
                                 {account?.role === 'admin' && (
                                     <div className="col-span-12 md:col-span-10 flex justify-end">
                                         <div className="flex gap-4 mt-4">
-                                            <button onClick={() => setIsEditing(true)} className="bg-yellow-500 text-white px-4 py-2 rounded">
+                                            <button onClick={() => setIsEditing(true)} className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
                                                 <FaEdit className=' text-3xl ' />
                                             </button>
-                                            <button onClick={handleDelete} className="bg-red-500 text-white px-4 py-2 rounded">
+                                            <button onClick={handleDelete} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
                                                 <MdDelete className=' text-3xl' />
                                             </button>
                                         </div>

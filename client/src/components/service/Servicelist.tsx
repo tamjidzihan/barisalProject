@@ -27,7 +27,7 @@ const Servicelist = ({ _id, mainServiceID, mainServiceSlug, name, type, image }:
                     </div>
 
                     {/* <!-- Title --> */}
-                    <div className="col-span-12 md:col-span-10 xl:ml-5 flex flex-col">
+                    <div className="col-span-12  md:col-span-10 xl:ml-5 flex flex-col">
                         <p className="text-red-800 text-xl font-semibold">{name}</p>
                         <p className="text-sm text-blue-600 font-light">{type}</p>
                     </div>
