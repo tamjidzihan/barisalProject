@@ -59,18 +59,21 @@ const ServiceItems = () => {
                     <div className=" flex gap-6 items-center justify-center mt-12 px-4 ">
                         <div className="bg-gradient-to-r from-[#9be2dc] to-[#f1d7e0] rounded-lg shadow-md w-full max-w-4xl p-6">
                             <div className="grid grid-cols-12 gap-4 items-center">
-                                <div className="col-span-12 md:col-span-2 flex justify-center text-[#0b635b] text-7xl">
-                                    <FaChevronRight />
-                                </div>
-                                {serviceItem?.image && (
-                                    <div className="col-span-12 md:col-span-12 flex justify-center">
+
+                                {serviceItem?.image ?
+                                    <div className="col-span-12 md:col-span-2 flex justify-center text-[#0b635b] text-7xl">
+                                        {/* <div className="col-span-12 md:col-span-12 flex justify-center"> */}
                                         <img
                                             src={serviceItem.image}
                                             alt={`${serviceItem.name} image`}
                                             className="rounded-lg max-w-full h-auto"
                                         />
                                     </div>
-                                )}
+                                    :
+                                    <div className="col-span-12 md:col-span-2 flex justify-center text-[#0b635b] text-7xl">
+                                        <FaChevronRight />
+                                    </div>
+                                }
                                 <div className="col-span-12 md:col-span-10">
                                     {serviceDetails.map((detail, index) => detail.value && (
                                         <div key={index} className="py-2">
