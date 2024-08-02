@@ -61,8 +61,7 @@ const ServiceItems = () => {
                             <div className="grid grid-cols-12 gap-4 items-center">
 
                                 {serviceItem?.image ?
-                                    <div className="col-span-12 md:col-span-2 flex justify-center text-[#0b635b] text-7xl">
-                                        {/* <div className="col-span-12 md:col-span-12 flex justify-center"> */}
+                                    <div className="col-span-12 md:col-span-12 flex justify-center">
                                         <img
                                             src={serviceItem.image}
                                             alt={`${serviceItem.name} image`}
@@ -73,6 +72,7 @@ const ServiceItems = () => {
                                     <div className="col-span-12 md:col-span-2 flex justify-center text-[#0b635b] text-7xl">
                                         <FaChevronRight />
                                     </div>
+
                                 }
                                 <div className="col-span-12 md:col-span-10">
                                     {serviceDetails.map((detail, index) => detail.value && (
