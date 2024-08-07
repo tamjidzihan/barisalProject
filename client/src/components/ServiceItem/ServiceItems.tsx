@@ -24,6 +24,8 @@ const ServiceItems = () => {
         { label: 'Founded', value: serviceItem?.founded },
         { label: 'Location', value: serviceItem?.location },
         { label: 'Students', value: serviceItem?.students },
+        { label: 'Email', value: serviceItem?.email },
+        { label: 'Website', value: serviceItem?.website },
         { label: 'Phone', value: serviceItem?.phone },
     ];
 

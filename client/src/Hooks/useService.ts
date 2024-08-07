@@ -19,6 +19,7 @@ export interface Service {
     description: string | null;
     destinations: string | null;
     email: string | null;
+    website: string | null;
 }
 
 export interface FetchServicelistResponse {

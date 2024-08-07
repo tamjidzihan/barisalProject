@@ -38,10 +38,6 @@ const collegeDetailSchema = new mongoose.Schema({
         type: Number,
         required: false
     },
-    campus: {
-        type: String,
-        required: false
-    },
     students: {
         type: Number,
         required: false
