@@ -159,6 +159,16 @@ const UpdateServiceItem: React.FC<UpdateServiceItemProps> = ({ serviceItem, onUp
                     />
                 </div>
                 <div className="mb-5">
+                    <label className="block text-gray-600">Email</label>
+                    <input
+                        type="text"
+                        name="email"
+                        value={updatedItem.email || ''}
+                        onChange={handleChange}
+                        className="mt-2 p-3 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                </div>
+                <div className="mb-5">
                     <label className="block text-gray-600">Type</label>
                     <input
                         type="text"

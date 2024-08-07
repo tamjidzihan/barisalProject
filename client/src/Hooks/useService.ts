@@ -18,6 +18,7 @@ export interface Service {
     location: string | null;
     description: string | null;
     destinations: string | null;
+    email: string | null;
 }
 
 export interface FetchServicelistResponse {
