@@ -8,23 +8,20 @@ const ServiceLayout = () => {
     const { slug } = useParams()
     const { serviceList, isLoading } = useService(slug as string)
 
-
-    if (isLoading) return <LoadingSpinner />;
+    if (isLoading) return <LoadingSpinner />
 
     return (
         <>
             {
                 serviceList.map((mainService) => (
                     <div key={mainService._id}>
-                        < ServiceListBanner
-
+                        <ServiceListBanner
                             serviceName={mainService.name}
                             serviceImage={mainService.image}
                             serviceDescription={mainService.description}
                         />
 
-                        <div className=' mt-12'>
-
+                        <div className='mt-12'>
                             {
                                 mainService.result.map((item) => (
                                     <Servicelist
@@ -45,12 +42,13 @@ const ServiceLayout = () => {
                                         location={item.location}
                                         description={item.description}
                                         destinations={item.destinations}
+                                        email={item.email}
+                                        website={item.website}
                                     />
                                 ))
                             }
                         </div>
                     </div>
-
                 ))
             }
         </>
