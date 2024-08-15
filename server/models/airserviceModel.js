@@ -11,6 +11,10 @@ const airServiceDetailSchema = new mongoose.Schema(
             type: String,
             required: false
         },
+        image: {
+            type: String,
+            required: false
+        },
         contact: {
             type: String,
             required: false
