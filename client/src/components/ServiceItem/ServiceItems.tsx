@@ -79,9 +79,20 @@ const ServiceItems = () => {
                                 <div className="col-span-12 md:col-span-10">
                                     {serviceDetails.map((detail, index) => detail.value && (
                                         <div key={index} className="py-2">
-                                            <p className="text-gray-700 text-lg md:text-xl font-semibold">
-                                                <span className="text-blue-600">{detail.label}:</span> {detail.value}
-                                            </p>
+
+                                            {detail.label === 'Website'
+                                                ?
+                                                <p className="text-gray-700 text-lg md:text-xl font-semibold">
+                                                    <span className="text-blue-600">{detail.label}: </span>
+                                                    <a href={detail.value}> {detail.value}</a>
+                                                </p>
+                                                :
+                                                <p className="text-gray-700 text-lg md:text-xl font-semibold">
+                                                    <span className="text-blue-600">{detail.label}:</span> {detail.value}
+                                                </p>
+                                            }
+
+
                                         </div>
                                     ))}
                                     {serviceItem?.type && (

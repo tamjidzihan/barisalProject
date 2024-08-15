@@ -32,11 +32,11 @@ const UpdateServiceItem: React.FC<UpdateServiceItemProps> = ({ serviceItem, onUp
             <form onSubmit={handleSubmit} className="max-w-2xl mx-auto border-red-600 p-6 bg-white rounded-lg shadow-md">
                 <h2 className="text-2xl font-semibold mb-6 text-gray-800">Update Service Item</h2>
                 <div className="flex justify-end gap-4 mt-6">
-                    <button type="button" onClick={onCancel} className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
-                        Cancel
-                    </button>
                     <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
                         Update
+                    </button>
+                    <button type="button" onClick={onCancel} className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+                        Cancel
                     </button>
                 </div>
                 <div className="mb-5">
@@ -168,6 +168,18 @@ const UpdateServiceItem: React.FC<UpdateServiceItemProps> = ({ serviceItem, onUp
                         className="mt-2 p-3 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
                     />
                 </div>
+
+                <div className="mb-5">
+                    <label className="block text-gray-600">Website</label>
+                    <input
+                        type="text"
+                        name="website"
+                        value={updatedItem.website || ''}
+                        onChange={handleChange}
+                        className="mt-2 p-3 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                </div>
+
                 <div className="mb-5">
                     <label className="block text-gray-600">Type</label>
                     <input

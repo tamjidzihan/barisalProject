@@ -23,6 +23,10 @@ const barServiceDetailSchema = new mongoose.Schema(
             type: String,
             required: false
         },
+        website: {
+            type: String,
+            required: false
+        },
         description: {
             type: String,
             required: false
