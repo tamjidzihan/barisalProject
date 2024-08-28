@@ -28,7 +28,7 @@ const models = {
   launchesservice: require("./models/launchesServiceModel"),
   busservice: require("./models/busServiceModel"),
   airservice: require("./models/airserviceModel"),
-  realEstateService: require("./models/realEstateModel"),
+  realestate: require("./models/realEstateModel"),
 };
 
 async function bootstrap() {
