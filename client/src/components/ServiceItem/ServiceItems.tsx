@@ -84,7 +84,7 @@ const ServiceItems = () => {
                                                 ?
                                                 <p className="text-gray-700 text-lg md:text-xl font-semibold">
                                                     <span className="text-blue-600">{detail.label}: </span>
-                                                    <a href={detail.value} className=' hover:underline'> {detail.value}</a>
+                                                    <a href={detail.value} target='_blank' className=' hover:underline'> {detail.value}</a>
                                                 </p>
                                                 :
                                                 <p className="text-gray-700 text-lg md:text-xl font-semibold">

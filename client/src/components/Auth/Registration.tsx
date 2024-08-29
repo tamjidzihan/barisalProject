@@ -61,7 +61,7 @@ const Registration: React.FC = () => {
                         {loading ? 'Registering...' : 'Register'}
                     </button>
                     <div className=' text-center'>
-                        <Link to={'/login'} className="text-red-500 text-md hover:underline ">I already have an accoun</Link>
+                        <Link to={'/login'} className="text-red-500 text-md hover:underline ">I already have an account</Link>
                     </div>
                 </form>
             </div>
