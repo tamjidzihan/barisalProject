@@ -34,8 +34,8 @@ const Banner = () => {
                                     Welcome Back, {account.username}
                                 </span>
                             )}
-                            <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-6xl mb-6">
-                                Everything <span className="text-[#03ab9c]">Barishal</span> <br />
+                            <h1 className="text-4xl font-extrabold tracking-tight text-[#DA291C] sm:text-6xl mb-6">
+                                Everything <span className="text-[#006747]">Barishal</span> <br />
                                 in one place.
                             </h1>
                             <p className="text-lg leading-8 text-gray-600 mb-10 max-w-2xl mx-auto lg:mx-0">
@@ -46,9 +46,9 @@ const Banner = () => {
                                 <a href="#explore" className="rounded-xl bg-[#8a173f] px-8 py-4 text-lg font-semibold text-white shadow-lg hover:bg-[#a01c4a] transition-all transform hover:scale-105 active:scale-95">
                                     Get Started
                                 </a>
-                                <a href="#" className="rounded-xl border-2 border-gray-200 px-8 py-4 text-lg font-semibold text-gray-700 hover:bg-gray-50 transition-all">
+                                <Link to="/about" className="rounded-xl border-2 border-gray-200 px-8 py-4 text-lg font-semibold text-gray-700 hover:bg-gray-50 transition-all">
                                     About Barishal
-                                </a>
+                                </Link>
                             </div>
                         </motion.div>
                     </div>
