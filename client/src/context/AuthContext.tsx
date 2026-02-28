@@ -9,10 +9,13 @@ export interface Account {
 // Define types
 interface AuthContextType {
     isLoggedIn: boolean;
-    account: Account | null; // Adjust the type according to your account data structure
+    account: Account | null;
     token: string | null;
-    register: (formData?: any) => Promise<boolean>; // Adjust formData type if necessary
-    login: (formData?: any) => Promise<boolean>; // Adjust formData type if necessary
+    register: (formData?: any) => Promise<boolean>;
+    login: (formData?: any) => Promise<boolean>;
+    updateUser: (formData?: any) => Promise<boolean>;
+    getAllUsers: () => Promise<any[]>;
+    updateRole: (userId: string, role: string) => Promise<boolean>;
     logout: () => void;
 }
 
@@ -72,6 +75,48 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
                 });
         });
 
+    const updateUser = (formData: any = {}): Promise<boolean> =>
+        new Promise((resolve, reject) => {
+            apiClient
+                .put('/auth/update', formData, {
+                    headers: { authorization: `Bearer ${token}` }
+                })
+                .then(({ data: { data: accountData } }) => {
+                    setAccount(accountData);
+                    resolve(true);
+                })
+                .catch((error) => {
+                    console.error(error);
+                    reject(error?.response?.data?.message || error.message);
+                });
+        });
+
+    const getAllUsers = (): Promise<any[]> =>
+        new Promise((resolve, reject) => {
+            apiClient
+                .get('/auth/users', {
+                    headers: { authorization: `Bearer ${token}` }
+                })
+                .then((res) => resolve(res.data))
+                .catch((error) => {
+                    console.error(error);
+                    reject(error?.response?.data?.message || error.message);
+                });
+        });
+
+    const updateRole = (userId: string, role: string): Promise<boolean> =>
+        new Promise((resolve, reject) => {
+            apiClient
+                .put('/auth/role', { userId, role }, {
+                    headers: { authorization: `Bearer ${token}` }
+                })
+                .then(() => resolve(true))
+                .catch((error) => {
+                    console.error(error);
+                    reject(error?.response?.data?.message || error.message);
+                });
+        });
+
     const logout = (): void => {
         setIsLoggedIn(false);
         setAccount(null);
@@ -120,6 +165,9 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
                 token,
                 register,
                 login,
+                updateUser,
+                getAllUsers,
+                updateRole,
                 logout,
             }}>
             {children}

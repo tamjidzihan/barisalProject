@@ -34,7 +34,7 @@ const ServicesPage = () => {
         if (selectedCategory !== 'All') {
             const group = categoryGroups.find(g => g.name === selectedCategory);
             if (group?.keywords) {
-                filtered = filtered.filter(s => 
+                filtered = filtered.filter(s =>
                     group.keywords?.some(k => s.slug?.toLowerCase().includes(k) || s.name.toLowerCase().includes(k))
                 );
             }
@@ -56,9 +56,9 @@ const ServicesPage = () => {
             {/* Header Section */}
             <div className="bg-white border-b border-gray-100 pt-12 pb-8">
                 <div className="container mx-auto px-6">
-                    <HeroTitle headingtext="Advanced Service Explorer" />
+                    <HeroTitle headingtext="Service Explorer" />
                     <p className="text-gray-500 mt-2 max-w-2xl">
-                        Find and filter every service available in Barishal with our advanced discovery tools.
+                        Find and filter every service available in Barishal with our discovery tools.
                     </p>
                 </div>
             </div>
@@ -72,17 +72,16 @@ const ServicesPage = () => {
                                 <FiFilter className="text-xl" />
                                 <h3 className="font-bold text-lg">Filter By Group</h3>
                             </div>
-                            
+
                             <div className="space-y-2">
                                 {categoryGroups.map((group) => (
                                     <button
                                         key={group.name}
                                         onClick={() => setSelectedCategory(group.name)}
-                                        className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl transition-all font-medium ${
-                                            selectedCategory === group.name
-                                            ? 'bg-[#03ab9c] text-white shadow-md'
-                                            : 'text-gray-600 hover:bg-gray-50'
-                                        }`}
+                                        className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl transition-all font-medium ${selectedCategory === group.name
+                                                ? 'bg-[#03ab9c] text-white shadow-md'
+                                                : 'text-gray-600 hover:bg-gray-50'
+                                            }`}
                                     >
                                         <span className={selectedCategory === group.name ? 'text-white' : 'text-[#03ab9c]'}>
                                             {group.icon}
@@ -96,7 +95,7 @@ const ServicesPage = () => {
                                 <h3 className="font-bold text-gray-800 mb-4 flex items-center gap-2">
                                     <FiChevronDown /> Sort Results
                                 </h3>
-                                <select 
+                                <select
                                     className="w-full bg-gray-50 border-none rounded-xl p-3 text-sm focus:ring-2 focus:ring-[#03ab9c] outline-none"
                                     onChange={(e) => {
                                         const [newSortBy, newOrder] = e.target.value.split('-') as [any, any];
@@ -128,7 +127,7 @@ const ServicesPage = () => {
                         {/* Results Count */}
                         <div className="flex justify-between items-center mb-6 px-2">
                             <p className="text-gray-500">
-                                Found <span className="text-[#8a173f] font-bold">{filteredAndSortedServices.length}</span> services 
+                                Found <span className="text-[#8a173f] font-bold">{filteredAndSortedServices.length}</span> services
                                 {selectedCategory !== 'All' && <span> in <span className="text-[#03ab9c] font-bold">{selectedCategory}</span></span>}
                             </p>
                         </div>
@@ -155,8 +154,8 @@ const ServicesPage = () => {
                             <div className="text-center py-32 bg-white rounded-3xl border border-dashed border-gray-200 mt-8">
                                 <div className="text-6xl mb-4 text-gray-200 flex justify-center"><FiSearch /></div>
                                 <h3 className="text-xl font-bold text-gray-400">No services match your criteria</h3>
-                                <button 
-                                    onClick={() => {setSearchTerm(''); setSelectedCategory('All');}}
+                                <button
+                                    onClick={() => { setSearchTerm(''); setSelectedCategory('All'); }}
                                     className="mt-4 text-[#03ab9c] font-bold hover:underline"
                                 >
                                     Clear all filters

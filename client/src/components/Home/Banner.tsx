@@ -1,6 +1,7 @@
 import { useAuth } from "../../context/AuthContext";
 import { motion } from "framer-motion";
 import { FaHospital, FaSchool, FaBus, FaUniversity } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
     const { account } = useAuth();
@@ -34,11 +35,11 @@ const Banner = () => {
                                 </span>
                             )}
                             <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-6xl mb-6">
-                                Everything <span className="text-[#03ab9c]">Barishal</span> <br /> 
+                                Everything <span className="text-[#03ab9c]">Barishal</span> <br />
                                 in one place.
                             </h1>
                             <p className="text-lg leading-8 text-gray-600 mb-10 max-w-2xl mx-auto lg:mx-0">
-                                বরিশাল জেলার সকল সার্ভিস এবং লোকেশন সম্পর্কে জানতে আমাদের সাথেই থাকুন। 
+                                বরিশাল জেলার সকল সার্ভিস এবং লোকেশন সম্পর্কে জানতে আমাদের সাথেই থাকুন।
                                 আমরা আপনাকে আপনার প্রয়োজনীয় তথ্যের সাথে সংযুক্ত করতে সাহায্য করি।
                             </p>
                             <div className="flex flex-wrap justify-center lg:justify-start gap-4">
@@ -53,22 +54,28 @@ const Banner = () => {
                     </div>
 
                     <div className="flex-1 w-full max-w-xl lg:max-w-none">
-                        <motion.div 
+                        <motion.div
                             initial={{ opacity: 0, scale: 0.8 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
                             className="grid grid-cols-2 gap-4"
                         >
                             {[
-                                { icon: <FaHospital className="text-3xl" />, label: "Hospitals", color: "bg-blue-50 text-blue-600" },
-                                { icon: <FaSchool className="text-3xl" />, label: "Schools", color: "bg-green-50 text-green-600" },
-                                { icon: <FaBus className="text-3xl" />, label: "Transport", color: "bg-orange-50 text-orange-600" },
-                                { icon: <FaUniversity className="text-3xl" />, label: "University", color: "bg-purple-50 text-purple-600" }
+                                { icon: <FaHospital className="text-3xl" />, label: "Hospitals", color: "bg-blue-50 text-blue-600", path: "/service/hospital" },
+                                { icon: <FaSchool className="text-3xl" />, label: "Schools", color: "bg-green-50 text-green-600", path: "/service/school" },
+                                { icon: <FaBus className="text-3xl" />, label: "Transport", color: "bg-orange-50 text-orange-600", path: "/service/busservice" },
+                                { icon: <FaUniversity className="text-3xl" />, label: "University", color: "bg-purple-50 text-purple-600", path: "/service/university" }
                             ].map((item, idx) => (
-                                <div key={idx} className={`p-8 rounded-3xl ${item.color} flex flex-col items-center justify-center text-center shadow-sm hover:shadow-md transition-shadow`}>
-                                    {item.icon}
+                                <Link
+                                    key={idx}
+                                    to={item.path}
+                                    className={`p-8 rounded-3xl ${item.color} flex flex-col items-center justify-center text-center shadow-sm hover:shadow-xl hover:scale-105 transition-all duration-300 group cursor-pointer`}
+                                >
+                                    <div className="transform group-hover:scale-110 transition-transform">
+                                        {item.icon}
+                                    </div>
                                     <span className="mt-4 font-bold text-gray-800">{item.label}</span>
-                                </div>
+                                </Link>
                             ))}
                         </motion.div>
                     </div>

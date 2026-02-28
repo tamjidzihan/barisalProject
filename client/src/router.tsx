@@ -7,6 +7,8 @@ import Login from "./components/Auth/Login";
 import Registration from "./components/Auth/Registration";
 import AboutPage from "./pages/AboutPage";
 import ServicesPage from "./pages/ServicesPage";
+import UserPage from "./pages/UserPage";
+import AdminPanel from "./pages/AdminPanel";
 
 
 
@@ -18,6 +20,8 @@ const router = createBrowserRouter([
             { index: true, element: <HomePage /> },
             { path: "/about", element: <AboutPage /> },
             { path: "/services", element: <ServicesPage /> },
+            { path: "/profile", element: <UserPage /> },
+            { path: "/admin", element: <AdminPanel /> },
             { path: "/login", element: <Login /> },
             { path: "/registration", element: <Registration /> },
             { path: "/service/:slug", element: <ServiceLayout /> },

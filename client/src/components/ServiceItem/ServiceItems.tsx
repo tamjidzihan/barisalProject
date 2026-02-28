@@ -76,7 +76,7 @@ const ServiceItems = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-gray-50 pb-20">
             {/* Hero Header */}
             <div className="relative bg-gradient-to-b from-[#8a173f]  to-[#03ab9c] h-80 rounded-b-3xl shadow-xl">
                 <div className="absolute inset-0 bg-black/10 rounded-b-3xl"></div>
