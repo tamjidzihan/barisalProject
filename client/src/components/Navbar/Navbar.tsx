@@ -42,9 +42,6 @@ const Navbar: React.FC = () => {
                         <Link to="/" className={linkClass('/')}>
                             <FaHome className="text-lg" /> Home
                         </Link>
-                        <Link to="/services" className={linkClass('/services')}>
-                            <FaGripHorizontal className="text-lg" /> All Services
-                        </Link>
                         <Link to="/about" className={linkClass('/about')}>
                             <FaInfoCircle className="text-lg" /> About
                         </Link>
@@ -70,9 +67,6 @@ const Navbar: React.FC = () => {
                     <div className="px-4 pt-4 pb-6 space-y-2">
                         <Link to="/" onClick={toggleNav} className={linkClass('/')}>
                             <FaHome /> Home
-                        </Link>
-                        <Link to="/services" onClick={toggleNav} className={linkClass('/services')}>
-                            <FaGripHorizontal /> All Services
                         </Link>
                         <Link to="/about" onClick={toggleNav} className={linkClass('/about')}>
                             <FaInfoCircle /> About

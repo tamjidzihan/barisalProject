@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Service } from '../../Hooks/useService';
+import { FaSave, FaTimes, FaCloudUploadAlt, FaInfoCircle } from 'react-icons/fa';
+import { motion } from 'framer-motion';
 
 interface UpdateServiceItemProps {
     serviceItem: Service;
@@ -23,176 +25,95 @@ const UpdateServiceItem: React.FC<UpdateServiceItemProps> = ({ serviceItem, onUp
         onUpdate(updatedItem);
     };
 
+    const inputFields = [
+        { name: 'name', label: 'Service Name', type: 'text', placeholder: 'e.g. Barishal General Hospital' },
+        { name: 'type', label: 'Service Type', type: 'text', placeholder: 'e.g. Medical, Education, Transport' },
+        { name: 'image', label: 'Image URL', type: 'text', placeholder: 'https://example.com/image.jpg' },
+        { name: 'phone', label: 'Phone Number', type: 'text', placeholder: '+880 1XXX XXXXXX' },
+        { name: 'email', label: 'Email Address', type: 'email', placeholder: 'contact@example.com' },
+        { name: 'website', label: 'Website URL', type: 'text', placeholder: 'https://example.com' },
+        { name: 'address', label: 'Physical Address', type: 'text', placeholder: 'Full address here' },
+        { name: 'location', label: 'Map Location/Area', type: 'text', placeholder: 'e.g. Sadar Road, Barishal' },
+        { name: 'branch', label: 'Branch Name', type: 'text', placeholder: 'e.g. Main Branch' },
+        { name: 'campus', label: 'Campus', type: 'text', placeholder: 'e.g. North Campus' },
+        { name: 'founded', label: 'Founded Year', type: 'text', placeholder: 'e.g. 1995' },
+        { name: 'students', label: 'Students/Capacity', type: 'number', placeholder: 'Current count' },
+        { name: 'contact', label: 'Contact Person', type: 'text', placeholder: 'Name of person to contact' },
+        { name: 'destinations', label: 'Destinations', type: 'text', placeholder: 'For transport services' },
+    ];
+
     return (
-        <><div className="bg-gradient-to-b from-[#8a173f] to-[#03ab9c] h-60 md:h-[15rem] lg:h-[10rem] rounded-b-full flex flex-col justify-center items-center">
-            <p className="text-white text-center px-4 text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold">
-                Update:  {serviceItem?.name}
-            </p>
-        </div>
-            <form onSubmit={handleSubmit} className="max-w-2xl mx-auto border-red-600 p-6 bg-white rounded-lg shadow-md">
-                <h2 className="text-2xl font-semibold mb-6 text-gray-800">Update Service Item</h2>
-                <div className="flex justify-end gap-4 mt-6">
-                    <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                        Update
-                    </button>
-                    <button type="button" onClick={onCancel} className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
-                        Cancel
-                    </button>
-                </div>
-                <div className="mb-5">
-                    <label className="block text-gray-600">Name</label>
-                    <input
-                        type="text"
-                        name="name"
-                        value={updatedItem.name}
-                        onChange={handleChange}
-                        className="mt-2 p-3 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
-                <div className="mb-5">
-                    <label className="block text-gray-600">Image</label>
-                    <input
-                        type="text"
-                        name="image"
-                        value={updatedItem.image || ''}
-                        onChange={handleChange}
-                        className="mt-2 p-3 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
-                <div className="mb-5">
-                    <label className="block text-gray-600">Branch</label>
-                    <input
-                        type="text"
-                        name="branch"
-                        value={updatedItem.branch || ''}
-                        onChange={handleChange}
-                        className="mt-2 p-3 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
-                <div className="mb-5">
-                    <label className="block text-gray-600">Address</label>
-                    <input
-                        type="text"
-                        name="address"
-                        value={updatedItem.address || ''}
-                        onChange={handleChange}
-                        className="mt-2 p-3 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
-                <div className="mb-5">
-                    <label className="block text-gray-600">Campus</label>
-                    <input
-                        type="text"
-                        name="campus"
-                        value={updatedItem.campus || ''}
-                        onChange={handleChange}
-                        className="mt-2 p-3 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
-                <div className="mb-5">
-                    <label className="block text-gray-600">Contact</label>
-                    <input
-                        type="text"
-                        name="contact"
-                        value={updatedItem.contact || ''}
-                        onChange={handleChange}
-                        className="mt-2 p-3 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
-                <div className="mb-5">
-                    <label className="block text-gray-600">Description</label>
-                    <textarea
-                        name="description"
-                        value={updatedItem.description || ''}
-                        onChange={handleChange}
-                        className="mt-2 p-3 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
-                <div className="mb-5">
-                    <label className="block text-gray-600">Destinations</label>
-                    <input
-                        type="text"
-                        name="destinations"
-                        value={updatedItem.destinations || ''}
-                        onChange={handleChange}
-                        className="mt-2 p-3 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
-                <div className="mb-5">
-                    <label className="block text-gray-600">Founded</label>
-                    <input
-                        type="text"
-                        name="founded"
-                        value={updatedItem.founded || ''}
-                        onChange={handleChange}
-                        className="mt-2 p-3 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
-                <div className="mb-5">
-                    <label className="block text-gray-600">Location</label>
-                    <input
-                        type="text"
-                        name="location"
-                        value={updatedItem.location || ''}
-                        onChange={handleChange}
-                        className="mt-2 p-3 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
-                <div className="mb-5">
-                    <label className="block text-gray-600">Students</label>
-                    <input
-                        type="number"
-                        name="students"
-                        value={updatedItem.students || ''}
-                        onChange={handleChange}
-                        className="mt-2 p-3 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
-                <div className="mb-5">
-                    <label className="block text-gray-600">Phone</label>
-                    <input
-                        type="text"
-                        name="phone"
-                        value={updatedItem.phone || ''}
-                        onChange={handleChange}
-                        className="mt-2 p-3 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
-                <div className="mb-5">
-                    <label className="block text-gray-600">Email</label>
-                    <input
-                        type="text"
-                        name="email"
-                        value={updatedItem.email || ''}
-                        onChange={handleChange}
-                        className="mt-2 p-3 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
+        <main className="bg-gray-50 min-h-screen py-12 px-6">
+            <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="max-w-4xl mx-auto"
+            >
+                <div className="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-gray-100">
+                    {/* Header */}
+                    <div className="bg-[#8a173f] p-8 md:p-12 text-white">
+                        <div className="flex items-center gap-4 mb-4">
+                            <div className="p-3 bg-white/10 rounded-2xl">
+                                <FaCloudUploadAlt className="text-3xl" />
+                            </div>
+                            <h1 className="text-3xl font-bold">Update Service</h1>
+                        </div>
+                        <p className="text-white/70 text-lg">Modifying information for <span className="text-white font-bold">{serviceItem.name}</span></p>
+                    </div>
 
-                <div className="mb-5">
-                    <label className="block text-gray-600">Website</label>
-                    <input
-                        type="text"
-                        name="website"
-                        value={updatedItem.website || ''}
-                        onChange={handleChange}
-                        className="mt-2 p-3 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
+                    <form onSubmit={handleSubmit} className="p-8 md:p-12">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+                            {inputFields.map((field) => (
+                                <div key={field.name} className="space-y-2">
+                                    <label className="text-sm font-bold text-gray-700 ml-1">{field.label}</label>
+                                    <input
+                                        type={field.type}
+                                        name={field.name}
+                                        value={(updatedItem as any)[field.name] || ''}
+                                        onChange={handleChange}
+                                        placeholder={field.placeholder}
+                                        className="w-full px-5 py-3.5 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-[#03ab9c] focus:border-transparent outline-none transition-all"
+                                    />
+                                </div>
+                            ))}
+                            
+                            <div className="md:col-span-2 space-y-2">
+                                <label className="text-sm font-bold text-gray-700 ml-1">Detailed Description</label>
+                                <textarea
+                                    name="description"
+                                    rows={4}
+                                    value={updatedItem.description || ''}
+                                    onChange={handleChange}
+                                    placeholder="Provide a comprehensive description of the service..."
+                                    className="w-full px-5 py-3.5 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-[#03ab9c] focus:border-transparent outline-none transition-all resize-none"
+                                />
+                            </div>
+                        </div>
 
-                <div className="mb-5">
-                    <label className="block text-gray-600">Type</label>
-                    <input
-                        type="text"
-                        name="type"
-                        value={updatedItem.type || ''}
-                        onChange={handleChange}
-                        className="mt-2 p-3 border rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    />
-                </div>
+                        <div className="mt-12 flex flex-col sm:flex-row gap-4">
+                            <button
+                                type="submit"
+                                className="flex-1 bg-[#03ab9c] text-white py-4 rounded-2xl font-bold text-lg shadow-lg hover:bg-[#028e82] transition-all transform active:scale-95 flex items-center justify-center gap-2"
+                            >
+                                <FaSave /> Save Changes
+                            </button>
+                            <button
+                                type="button"
+                                onClick={onCancel}
+                                className="flex-1 bg-gray-100 text-gray-600 py-4 rounded-2xl font-bold text-lg hover:bg-gray-200 transition-all flex items-center justify-center gap-2"
+                            >
+                                <FaTimes /> Discard Changes
+                            </button>
+                        </div>
 
-            </form>
-        </>
+                        <div className="mt-8 flex items-center gap-2 text-gray-400 text-xs justify-center italic">
+                            <FaInfoCircle />
+                            Changes will be applied immediately across the platform.
+                        </div>
+                    </form>
+                </div>
+            </motion.div>
+        </main>
     );
 };
 

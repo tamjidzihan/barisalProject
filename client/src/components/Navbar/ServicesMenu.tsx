@@ -68,6 +68,16 @@ const ServicesMenu = () => {
                             ))}
                         </div>
                     )}
+                    
+                    <div className="mt-2 pt-2 border-t border-gray-50 px-2">
+                        <Link 
+                            to="/services" 
+                            onClick={() => setDropdownOpenServices(false)}
+                            className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl bg-gray-50 text-[#8a173f] font-bold text-sm hover:bg-[#8a173f] hover:text-white transition-all group"
+                        >
+                            View All Services <FaChevronDown className="-rotate-90 group-hover:translate-x-1 transition-transform" />
+                        </Link>
+                    </div>
                 </div>
             )}
         </div>
