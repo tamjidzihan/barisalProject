@@ -1,51 +1,49 @@
-import { useState } from 'react';
 import useService from '../../Hooks/useAllService';
 import HeroTitle from './HeroTitle';
 import ServiceCard from './ServiceCard';
 import LoadingSpinner from './LoadingSpinner';
-import { FiSearch } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
+import { FaArrowRight } from 'react-icons/fa';
 
 const ServiceGrid = () => {
 
     const { service, error, isLoading } = useService();
-    const [searchTerm, setSearchTerm] = useState('');
 
     if (isLoading) return <LoadingSpinner />;
-    if (error) return <div>Error: {error}</div>;
+    if (error) return <div className="text-center py-10 text-red-500">Error: {error}</div>;
 
-    const filteredServices = service?.filter(s =>
-        s.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    // Show only first 6 or 10 services on homepage
+    const limitedServices = service?.slice(0, 10);
 
     return (
-        <section className='container mx-auto px-4 my-16'>
-
-            <div className='flex flex-col md:flex-row justify-between items-center mb-10 gap-6'>
-                <HeroTitle headingtext='Explore Services' />
-                <div className='relative w-full md:w-96'>
-                    <FiSearch className='absolute left-3 top-1/2 -transform -translate-y-1/2 text-gray-400 text-xl' />
-                    <input
-                        type='text'
-                        placeholder='Search for a service...'
-                        className='w-full pl-10 pr-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-[#03ab9c] focus:border-transparent outline-none transition-all shadow-sm'
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                </div>
+        <section className='container mx-auto px-6 my-20'>
+            <div className='flex flex-col md:flex-row justify-between items-end mb-12 gap-6'>
+                <HeroTitle headingtext='Our Services' />
+                <Link
+                    to="/services"
+                    className="flex items-center gap-2 text-[#03ab9c] font-bold hover:gap-4 transition-all group border-b-2 border-[#03ab9c]/20 pb-1 whitespace-nowrap"
+                >
+                    Explore All Services
+                    <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                </Link>
             </div>
 
-            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6'>
+            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-8'>
                 {
-                    filteredServices?.map(service =>
+                    limitedServices?.map(service =>
                         <ServiceCard key={service._id} image={service.image} name={service.name} description={service.description} _id={service._id} slug={service.slug} />
                     )
                 }
             </div>
 
-            {filteredServices?.length === 0 && (
-                <div className='text-center py-20 text-gray-500'>
-                    <p className='text-xl'>No services found matching your search.</p>
-                </div>
-            )}
+            <div className="mt-16 text-center">
+                <Link
+                    to="/services"
+                    className="inline-flex items-center gap-3 px-10 py-5 bg-[#8a173f] text-white rounded-2xl font-bold text-lg shadow-xl hover:bg-[#a01c4a] transition-all transform hover:scale-105 active:scale-95"
+                >
+                    View All Categories <FaArrowRight />
+                </Link>
+            </div>
         </section>
     )
 }

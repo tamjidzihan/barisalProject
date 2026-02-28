@@ -1,8 +1,8 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Service } from '../../Hooks/useService';
-import { FaFileCircleCheck, FaList } from "react-icons/fa6";
-import { FaTh } from 'react-icons/fa';
+import { FaBuilding, FaThLarge, FaListUl, FaArrowRight } from "react-icons/fa";
 
 interface ServiceUse extends Service {
     mainServiceID: string;
@@ -16,114 +16,161 @@ interface ServiceListProps {
 }
 
 const Servicelist = ({ services, viewMode, onViewModeChange }: ServiceListProps) => {
+    const [visibleCount, setVisibleCount] = useState(6);
+    const visibleServices = services.slice(0, visibleCount);
+
     return (
-        <div className="flex flex-col gap-6">
-            {/* View Mode Toggle */}
-            <div className="flex justify-end items-center gap-2 mb-4">
-                <span className="text-sm text-gray-600 mr-2">View:</span>
-                <button
-                    onClick={() => onViewModeChange('list')}
-                    className={`p-2 rounded-lg transition-colors ${viewMode === 'list'
-                        ? 'bg-blue-500 text-white'
-                        : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
+        <div className="space-y-8">
+            {/* Control Bar */}
+            <div className="flex flex-col md:flex-row justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-gray-100 gap-4">
+                <p className="text-gray-600 font-medium">
+                    Showing <span className="text-[#8a173f]">{visibleServices.length}</span> of <span className="text-[#8a173f]">{services.length}</span> results
+                </p>
+                <div className="flex items-center gap-2 bg-gray-50 p-1.5 rounded-xl">
+                    <button
+                        onClick={() => onViewModeChange('grid')}
+                        className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-all ${
+                            viewMode === 'grid'
+                            ? 'bg-white text-[#8a173f] shadow-sm font-bold'
+                            : 'text-gray-500 hover:text-gray-700'
                         }`}
-                    aria-label="List view"
-                >
-                    <FaList className="w-5 h-5" />
-                </button>
-                <button
-                    onClick={() => onViewModeChange('grid')}
-                    className={`p-2 rounded-lg transition-colors ${viewMode === 'grid'
-                        ? 'bg-blue-500 text-white'
-                        : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
+                    >
+                        <FaThLarge /> Grid
+                    </button>
+                    <button
+                        onClick={() => onViewModeChange('list')}
+                        className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-all ${
+                            viewMode === 'list'
+                            ? 'bg-white text-[#8a173f] shadow-sm font-bold'
+                            : 'text-gray-500 hover:text-gray-700'
                         }`}
-                    aria-label="Grid view"
-                >
-                    <FaTh className="w-5 h-5" />
-                </button>
+                    >
+                        <FaListUl /> List
+                    </button>
+                </div>
             </div>
 
-            {/* Services Container */}
+            {/* Services Display */}
             <div className={
                 viewMode === 'grid'
-                    ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                    ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                     : "flex flex-col gap-4"
             }>
-                {services.map((service) => (
-                    <ServiceItem
-                        key={service._id}
-                        service={service}
-                        viewMode={viewMode}
-                    />
-                ))}
+                <AnimatePresence mode='popLayout'>
+                    {visibleServices.map((service) => (
+                        <ServiceItem
+                            key={service._id}
+                            service={service}
+                            viewMode={viewMode}
+                        />
+                    ))}
+                </AnimatePresence>
             </div>
+
+            {/* View More Button */}
+            {visibleCount < services.length && (
+                <div className="flex justify-center pt-8">
+                    <button
+                        onClick={() => setVisibleCount(prev => prev + 6)}
+                        className="px-10 py-4 bg-white border-2 border-[#8a173f] text-[#8a173f] font-bold rounded-2xl hover:bg-[#8a173f] hover:text-white transition-all transform hover:scale-105 active:scale-95 shadow-md flex items-center gap-2"
+                    >
+                        View More Services <FaArrowRight />
+                    </button>
+                </div>
+            )}
         </div>
     );
 };
 
-// Separate component for individual service items
 interface ServiceItemProps {
     service: ServiceUse;
     viewMode: 'list' | 'grid';
 }
 
 const ServiceItem = ({ service, viewMode }: ServiceItemProps) => {
-    const { _id, mainServiceID, mainServiceSlug, name, type, image } = service;
+    const { _id, mainServiceID, mainServiceSlug, name, type, image, address } = service;
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0 },
+        exit: { opacity: 0, scale: 0.95 }
+    };
 
     if (viewMode === 'grid') {
         return (
             <motion.div
-                whileHover={{ scale: 1.05, boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.1)' }}
-                transition={{ duration: 0.3 }}
-                className="flex flex-col"
+                layout
+                variants={itemVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                whileHover={{ y: -10 }}
+                className="group h-full"
             >
                 <Link
                     to={`/service/${mainServiceSlug}/${mainServiceID}/${_id}`}
-                    className="bg-gradient-to-r from-[#9be2dc] to-[#f1d7e0] rounded-lg h-full flex flex-col shadow p-6 gap-4 transform border-s-[1rem] border-[#0b635b] hover:no-underline"
+                    className="flex flex-col h-full bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100 group-hover:border-[#03ab9c]/20"
                 >
-                    {/* Icon or Image */}
-                    <div className="flex justify-center mb-2">
+                    <div className="relative h-48 bg-gray-100 overflow-hidden">
                         {image ? (
-                            <img src={image} alt={name} className="w-20 h-20 object-cover rounded-full" />
+                            <img src={image} alt={name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                         ) : (
-                            <FaFileCircleCheck className="w-20 h-20 text-indigo-500" />
+                            <div className="w-full h-full flex items-center justify-center bg-[#03ab9c]/5 text-[#03ab9c]">
+                                <FaBuilding className="text-5xl" />
+                            </div>
                         )}
+                        <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-[#8a173f] shadow-sm uppercase tracking-wider">
+                            {type}
+                        </div>
                     </div>
 
-                    {/* Content */}
-                    <div className="flex flex-col items-center text-center flex-grow">
-                        <p className="text-red-800 text-xl font-semibold mb-2">{name}</p>
-                        <p className="text-sm text-blue-600 font-light">{type}</p>
+                    <div className="p-6 flex flex-col flex-grow">
+                        <h3 className="text-xl font-bold text-gray-800 mb-2 group-hover:text-[#03ab9c] transition-colors line-clamp-1">{name}</h3>
+                        <p className="text-gray-500 text-sm line-clamp-2 mb-4 flex-grow">{address || 'Location information available.'}</p>
+                        <div className="flex items-center text-[#8a173f] font-bold text-sm">
+                            Learn More <FaArrowRight className="ml-2 group-hover:translate-x-2 transition-transform" />
+                        </div>
                     </div>
                 </Link>
             </motion.div>
         );
     }
 
-    // List View (original layout)
     return (
         <motion.div
-            whileHover={{ scale: 1.02, boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.1)' }}
-            transition={{ duration: 0.3 }}
-            className="flex"
+            layout
+            variants={itemVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            whileHover={{ x: 10 }}
         >
             <Link
                 to={`/service/${mainServiceSlug}/${mainServiceID}/${_id}`}
-                className="bg-gradient-to-r from-[#9be2dc] to-[#f1d7e0] rounded-lg w-full grid grid-cols-12 shadow p-4 gap-3 items-center transform border-s-[1rem] border-[#0b635b] hover:no-underline"
+                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-gray-100 p-4 flex flex-col md:flex-row items-center gap-6 group"
             >
-                {/* Icon or Image */}
-                <div className="col-span-12 md:col-span-1 flex justify-start">
+                <div className="w-20 h-20 flex-shrink-0 rounded-xl overflow-hidden bg-gray-50">
                     {image ? (
-                        <img src={image} alt={name} className="w-16 h-16 object-cover rounded-full" />
+                        <img src={image} alt={name} className="w-full h-full object-cover" />
                     ) : (
-                        <FaFileCircleCheck className="w-16 h-16 text-indigo-500" />
+                        <div className="w-full h-full flex items-center justify-center text-[#03ab9c]">
+                            <FaBuilding className="text-3xl" />
+                        </div>
                     )}
                 </div>
 
-                {/* Title */}
-                <div className="col-span-12 md:col-span-10 xl:ml-5 flex flex-col">
-                    <p className="text-red-800 text-xl font-semibold">{name}</p>
-                    <p className="text-sm text-blue-600 font-light">{type}</p>
+                <div className="flex-grow text-center md:text-left">
+                    <div className="flex flex-col md:flex-row md:items-center gap-2 mb-1">
+                        <h3 className="text-lg font-bold text-gray-800 group-hover:text-[#03ab9c] transition-colors">{name}</h3>
+                        <span className="text-[10px] font-bold text-[#8a173f] bg-[#8a173f]/5 px-2 py-0.5 rounded-full uppercase tracking-tighter self-center">
+                            {type}
+                        </span>
+                    </div>
+                    <p className="text-gray-500 text-sm">{address || 'No address provided.'}</p>
+                </div>
+
+                <div className="flex-shrink-0 text-[#03ab9c] opacity-0 group-hover:opacity-100 transition-opacity pr-4">
+                    <FaArrowRight className="text-xl" />
                 </div>
             </Link>
         </motion.div>

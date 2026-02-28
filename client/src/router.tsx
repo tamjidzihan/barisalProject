@@ -5,6 +5,8 @@ import ServiceLayout from "./pages/ServiceLayout";
 import ServiceItemPage from "./pages/ServiceItemPage";
 import Login from "./components/Auth/Login";
 import Registration from "./components/Auth/Registration";
+import AboutPage from "./pages/AboutPage";
+import ServicesPage from "./pages/ServicesPage";
 
 
 
@@ -14,6 +16,8 @@ const router = createBrowserRouter([
         element: <Layout />,
         children: [
             { index: true, element: <HomePage /> },
+            { path: "/about", element: <AboutPage /> },
+            { path: "/services", element: <ServicesPage /> },
             { path: "/login", element: <Login /> },
             { path: "/registration", element: <Registration /> },
             { path: "/service/:slug", element: <ServiceLayout /> },
