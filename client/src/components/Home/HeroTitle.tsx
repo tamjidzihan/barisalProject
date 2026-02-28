@@ -1,17 +1,16 @@
-
 interface HeroTitleProps {
     headingtext: string
 }
 
-
 const HeroTitle = ({ headingtext }: HeroTitleProps) => {
     return (
-        <div className="md:w-3/12 mx-auto text-center font-bold my-4">
-            <h3 className="text-4xl uppercase py-2 text-red-600">
+        <div className="w-full text-center md:text-left">
+            <h2 className="text-3xl md:text-5xl font-extrabold text-[#03ab9c] leading-tight mb-4 tracking-tight">
                 {headingtext}
-            </h3>
+            </h2>
+            <div className="h-1.5 w-24 bg-[#8a173f] rounded-full mt-2 mx-auto md:mx-0 opacity-80"></div>
         </div>
     )
 }
 
-export default HeroTitle
+export default HeroTitle;
