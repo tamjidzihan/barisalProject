@@ -176,7 +176,7 @@ const ServiceItems = () => {
                                         </div>
                                         <div>
                                             <p className="text-xs text-white/50 font-bold uppercase tracking-tighter">Website</p>
-                                            <p className="font-bold">Visit Official Site</p>
+                                            <p className="font-bold max-w-[200px]">{serviceItem.website}</p>
                                         </div>
                                     </a>
                                 )}
