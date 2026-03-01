@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Service } from '../../Hooks/useService';
-import { FaBuilding, FaThLarge, FaListUl, FaArrowRight } from "react-icons/fa";
+import { FaBuilding, FaThLarge, FaListUl, FaArrowRight, FaSearch, FaTimes } from "react-icons/fa";
 
 interface ServiceUse extends Service {
     mainServiceID: string;
@@ -13,25 +13,50 @@ interface ServiceListProps {
     services: ServiceUse[];
     viewMode: 'list' | 'grid';
     onViewModeChange: (mode: 'list' | 'grid') => void;
+    searchTerm: string;
+    onSearchChange: (value: string) => void;
 }
 
-const Servicelist = ({ services, viewMode, onViewModeChange }: ServiceListProps) => {
+const Servicelist = ({ services, viewMode, onViewModeChange, searchTerm, onSearchChange }: ServiceListProps) => {
     const [visibleCount, setVisibleCount] = useState(6);
     const visibleServices = services.slice(0, visibleCount);
 
     return (
         <div className="space-y-8">
             {/* Control Bar */}
-            <div className="flex flex-col md:flex-row justify-between items-center bg-white p-4 rounded-2xl shadow-sm border border-gray-100 gap-4">
-                <p className="text-gray-600 font-medium">
-                    Showing <span className="text-[#8a173f]">{visibleServices.length}</span> of <span className="text-[#8a173f]">{services.length}</span> results
-                </p>
-                <div className="flex items-center gap-2 bg-gray-50 p-1.5 rounded-xl">
+            <div className="flex flex-col lg:flex-row justify-between items-center bg-white p-4 rounded-3xl shadow-sm border border-gray-100 gap-6">
+                <div className="flex items-center gap-4">
+                    <p className="text-gray-500 font-medium whitespace-nowrap">
+                        Results: <span className="text-[#8a173f] font-bold">{services.length}</span>
+                    </p>
+                </div>
+
+                {/* Search Input in Control Bar */}
+                <div className="relative flex-grow max-w-xl w-full group">
+                    <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-[#03ab9c] transition-colors" />
+                    <input
+                        type="text"
+                        placeholder="Search services by name or location..."
+                        value={searchTerm}
+                        onChange={(e) => onSearchChange(e.target.value)}
+                        className="w-full pl-11 pr-10 py-3 bg-gray-50 border border-transparent rounded-2xl focus:bg-white focus:ring-2 focus:ring-[#03ab9c]/20 focus:border-[#03ab9c] outline-none transition-all text-sm font-medium"
+                    />
+                    {searchTerm && (
+                        <button
+                            onClick={() => onSearchChange('')}
+                            className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-red-500 transition-colors"
+                        >
+                            <FaTimes />
+                        </button>
+                    )}
+                </div>
+
+                <div className="flex items-center gap-2 bg-gray-50 p-1.5 rounded-2xl shrink-0">
                     <button
                         onClick={() => onViewModeChange('grid')}
-                        className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-all ${
+                        className={`px-5 py-2.5 rounded-xl flex items-center gap-2 transition-all text-sm ${
                             viewMode === 'grid'
-                            ? 'bg-white text-[#8a173f] shadow-sm font-bold'
+                            ? 'bg-white text-[#8a173f] shadow-md font-bold'
                             : 'text-gray-500 hover:text-gray-700'
                         }`}
                     >
@@ -39,9 +64,9 @@ const Servicelist = ({ services, viewMode, onViewModeChange }: ServiceListProps)
                     </button>
                     <button
                         onClick={() => onViewModeChange('list')}
-                        className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-all ${
+                        className={`px-5 py-2.5 rounded-xl flex items-center gap-2 transition-all text-sm ${
                             viewMode === 'list'
-                            ? 'bg-white text-[#8a173f] shadow-sm font-bold'
+                            ? 'bg-white text-[#8a173f] shadow-md font-bold'
                             : 'text-gray-500 hover:text-gray-700'
                         }`}
                     >
@@ -57,13 +82,32 @@ const Servicelist = ({ services, viewMode, onViewModeChange }: ServiceListProps)
                     : "flex flex-col gap-4"
             }>
                 <AnimatePresence mode='popLayout'>
-                    {visibleServices.map((service) => (
-                        <ServiceItem
-                            key={service._id}
-                            service={service}
-                            viewMode={viewMode}
-                        />
-                    ))}
+                    {visibleServices.length > 0 ? (
+                        visibleServices.map((service) => (
+                            <ServiceItem
+                                key={service._id}
+                                service={service}
+                                viewMode={viewMode}
+                            />
+                        ))
+                    ) : (
+                        <motion.div 
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            className="col-span-full py-20 text-center bg-white rounded-3xl border border-dashed border-gray-200"
+                        >
+                            <div className="text-5xl text-gray-200 mb-4 flex justify-center">
+                                <FaSearch />
+                            </div>
+                            <h3 className="text-xl font-bold text-gray-400">No services found matching your search</h3>
+                            <button 
+                                onClick={() => onSearchChange('')}
+                                className="mt-4 text-[#03ab9c] font-bold hover:underline"
+                            >
+                                Clear search and see all
+                            </button>
+                        </motion.div>
+                    )}
                 </AnimatePresence>
             </div>
 

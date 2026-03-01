@@ -9,6 +9,7 @@ const ServiceLayout = () => {
     const { slug } = useParams()
     const { serviceList, isLoading } = useService(slug as string)
     const [viewMode, setViewMode] = useState<'list' | 'grid'>('list')
+    const [searchTerm, setSearchTerm] = useState('');
 
     if (isLoading) return <LoadingSpinner />
 
@@ -38,6 +39,14 @@ const ServiceLayout = () => {
                         website: item.website
                     }))
 
+                    // Filter services based on search term
+                    const filteredServices = services.filter(item =>
+                        item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        item.address?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        item.location?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        item.type?.toLowerCase().includes(searchTerm.toLowerCase())
+                    );
+
                     return (
                         <div key={mainService._id}>
                             <ServiceListBanner
@@ -48,9 +57,11 @@ const ServiceLayout = () => {
 
                             <div className='my-12 px-5 mx-auto max-w-[1440px]'>
                                 <Servicelist
-                                    services={services}
+                                    services={filteredServices}
                                     viewMode={viewMode}
                                     onViewModeChange={setViewMode}
+                                    searchTerm={searchTerm}
+                                    onSearchChange={setSearchTerm}
                                 />
                             </div>
                         </div>
