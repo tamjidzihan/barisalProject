@@ -1,23 +1,36 @@
 import { motion } from "framer-motion";
-import { FaHistory, FaBullseye, FaUsers, FaHeart } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaHistory, FaBullseye, FaUsers, FaHeart, FaHome, FaChevronRight } from "react-icons/fa";
 
 const AboutPage = () => {
     return (
         <main className="bg-white">
             {/* Hero Section */}
             <section className="relative py-20 bg-[#8a173f]/5">
-                <div className="container mx-auto px-6 text-center">
-                    <motion.h1 
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6"
-                    >
-                        Connecting Barishal <br /> 
-                        <span className="text-[#03ab9c]">to the Future</span>
-                    </motion.h1>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                        We are dedicated to digitizing Barishal's essential services, making information accessible to every citizen.
-                    </p>
+                <div className="container mx-auto px-6">
+                    {/* Breadcrumb */}
+                    <nav className="flex items-center space-x-2 text-gray-400 text-sm mb-8 justify-center">
+                        <Link to="/" className="flex items-center hover:text-[#8a173f] transition-colors">
+                            <FaHome className="mr-1" />
+                            Home
+                        </Link>
+                        <FaChevronRight className="text-[10px]" />
+                        <span className="text-gray-600 font-medium">About Us</span>
+                    </nav>
+
+                    <div className="text-center">
+                        <motion.h1 
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6"
+                        >
+                            Connecting Barishal <br /> 
+                            <span className="text-[#03ab9c]">to the Future</span>
+                        </motion.h1>
+                        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                            We are dedicated to digitizing Barishal's essential services, making information accessible to every citizen.
+                        </p>
+                    </div>
                 </div>
             </section>
 

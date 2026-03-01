@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import useServiceItems from '../../Hooks/useServiceItems';
 import {
     FaGlobe, FaPhone, FaEnvelope, FaMapMarkerAlt,
     FaUsers, FaCalendarAlt, FaEdit, FaArrowLeft,
-    FaRegClock, FaLayerGroup, FaBuilding, FaMap
+    FaRegClock, FaLayerGroup, FaBuilding, FaMap,
+    FaHome, FaChevronRight
 } from "react-icons/fa";
 import { MdDelete, MdInfoOutline } from "react-icons/md";
 import { useAuth } from '../../context/AuthContext';
@@ -97,6 +98,24 @@ const ServiceItems = () => {
                             animate={{ opacity: 1, y: 0 }}
                             className="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-gray-100"
                         >
+                            {/* Breadcrumb */}
+                            <nav className="flex items-center space-x-2 text-gray-400 text-xs mb-6 uppercase tracking-widest">
+                                <Link to="/" className="flex items-center hover:text-[#8a173f] transition-colors">
+                                    <FaHome className="mr-1" />
+                                    Home
+                                </Link>
+                                <FaChevronRight className="text-[8px]" />
+                                <Link to="/services" className="hover:text-[#8a173f] transition-colors">
+                                    Services
+                                </Link>
+                                <FaChevronRight className="text-[8px]" />
+                                <Link to={`/service/${mainServiceSlug}`} className="hover:text-[#8a173f] transition-colors">
+                                    {mainServiceSlug?.replace(/-/g, ' ')}
+                                </Link>
+                                <FaChevronRight className="text-[8px]" />
+                                <span className="text-gray-600 font-bold truncate max-w-[150px]">{serviceItem?.name}</span>
+                            </nav>
+
                             <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
                                 {serviceItem?.name}
                             </h1>

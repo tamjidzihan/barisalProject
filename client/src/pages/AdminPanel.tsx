@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaUserShield, FaUsers, FaArrowRight, FaFilter } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { FaUserShield, FaUsers, FaArrowRight, FaFilter, FaHome, FaChevronRight } from 'react-icons/fa';
 import LoadingSpinner from '../components/Home/LoadingSpinner';
 
 const AdminPanel: React.FC = () => {
@@ -44,6 +45,16 @@ const AdminPanel: React.FC = () => {
     return (
         <main className="min-h-screen bg-gray-50 py-20">
             <div className="container mx-auto px-6">
+                {/* Breadcrumb */}
+                <nav className="flex items-center space-x-2 text-gray-400 text-sm mb-8">
+                    <Link to="/" className="flex items-center hover:text-[#8a173f] transition-colors">
+                        <FaHome className="mr-1" />
+                        Home
+                    </Link>
+                    <FaChevronRight className="text-[10px]" />
+                    <span className="text-gray-600 font-medium">Admin Panel</span>
+                </nav>
+
                 <div className="flex flex-col md:flex-row justify-between items-center mb-10 gap-6">
                     <div className="flex items-center gap-4">
                         <div className="p-4 bg-[#8a173f] text-white rounded-2xl shadow-lg">

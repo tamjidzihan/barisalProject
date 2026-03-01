@@ -1,11 +1,12 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import useService from '../Hooks/useAllService';
 import ServiceCard from '../components/Home/ServiceCard';
 import LoadingSpinner from '../components/Home/LoadingSpinner';
 import HeroTitle from '../components/Home/HeroTitle';
 import { FiSearch, FiFilter, FiChevronDown } from 'react-icons/fi';
-import { FaGraduationCap, FaHeartbeat, FaBus, FaUtensils, FaBriefcase, FaAllergies } from 'react-icons/fa';
+import { FaGraduationCap, FaHeartbeat, FaBus, FaUtensils, FaBriefcase, FaAllergies, FaHome, FaChevronRight } from 'react-icons/fa';
 
 const ServicesPage = () => {
     const { service, error, isLoading } = useService();
@@ -56,6 +57,14 @@ const ServicesPage = () => {
             {/* Header Section */}
             <div className="bg-white border-b border-gray-100 pt-12 pb-8">
                 <div className="container mx-auto px-6">
+                    <nav className="flex items-center space-x-2 text-gray-400 text-sm mb-4">
+                        <Link to="/" className="flex items-center hover:text-[#8a173f] transition-colors">
+                            <FaHome className="mr-1" />
+                            Home
+                        </Link>
+                        <FaChevronRight className="text-[10px]" />
+                        <span className="text-gray-600 font-medium">Services</span>
+                    </nav>
                     <HeroTitle headingtext="Service Explorer" />
                     <p className="text-gray-500 mt-2 max-w-2xl">
                         Find and filter every service available in Barishal with our discovery tools.

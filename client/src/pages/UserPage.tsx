@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { motion } from 'framer-motion';
-import { FaUser, FaLock, FaSave } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { FaUser, FaLock, FaSave, FaHome, FaChevronRight } from 'react-icons/fa';
 
 const UserPage: React.FC = () => {
     const { account, updateUser } = useAuth();
@@ -29,6 +30,16 @@ const UserPage: React.FC = () => {
     return (
         <main className="min-h-screen bg-gray-50 py-20">
             <div className="container mx-auto px-6 max-w-2xl">
+                {/* Breadcrumb */}
+                <nav className="flex items-center space-x-2 text-gray-400 text-sm mb-8">
+                    <Link to="/" className="flex items-center hover:text-[#8a173f] transition-colors">
+                        <FaHome className="mr-1" />
+                        Home
+                    </Link>
+                    <FaChevronRight className="text-[10px]" />
+                    <span className="text-gray-600 font-medium">Profile</span>
+                </nav>
+
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
