@@ -11,7 +11,10 @@ class MongoDB {
     }
 
     async connect() {
-        if (this.isConnected) return
+        if (this.isConnected) {
+            console.log('✅ Using existing MongoDB connection')
+            return
+        }
 
         try {
             const db = await this.mongoose.connect(this.MONGO_URI, this.MONGO_OPTIONS)

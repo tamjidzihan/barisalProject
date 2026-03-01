@@ -5,7 +5,10 @@ const PORT = 5000
 // const MONGO_URI = 'mongodb://localhost:27017/barisalProjectDB'
 
 const MONGO_URI = 'mongodb+srv://root:root1234@barisalcloud.xeglnva.mongodb.net/'
-const MONGO_OPTIONS = {}
+const MONGO_OPTIONS = {
+    serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
+    socketTimeoutMS: 45000, // Close sockets after 45s of inactivity
+}
 
 const JWT_SECRET = 'unsafe_secret'
 
