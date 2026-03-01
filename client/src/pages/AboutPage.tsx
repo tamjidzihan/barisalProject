@@ -19,12 +19,12 @@ const AboutPage = () => {
                     </nav>
 
                     <div className="text-center">
-                        <motion.h1 
+                        <motion.h1
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-6"
                         >
-                            Connecting Barishal <br /> 
+                            Connecting Barishal <br />
                             <span className="text-[#03ab9c]">to the Future</span>
                         </motion.h1>
                         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -61,14 +61,95 @@ const AboutPage = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="relative">
-                        <div className="aspect-square bg-gradient-to-tr from-[#8a173f]/20 to-[#03ab9c]/20 rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center">
-                             <div className="text-center p-12">
-                                <h3 className="text-8xl font-black text-white/50 mb-4">2026</h3>
-                                <p className="text-2xl font-bold text-gray-800">Leading the Digital Transformation of Barishal</p>
-                             </div>
+                   <div className="relative">
+                        {/* Floating orbs behind the card */}
+                        <motion.div
+                            animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
+                            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                            className="absolute -top-8 -left-8 w-32 h-32 bg-[#03ab9c]/30 rounded-full blur-2xl pointer-events-none"
+                        />
+                        <motion.div
+                            animate={{ scale: [1, 1.4, 1], opacity: [0.2, 0.5, 0.2] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                            className="absolute -bottom-8 -right-8 w-40 h-40 bg-[#8a173f]/30 rounded-full blur-2xl pointer-events-none"
+                        />
+
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.8, rotateY: -15 }}
+                        animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        whileHover={{ scale: 1.03, rotateY: 5, rotateX: -3 }}
+                        style={{ perspective: 1000 }}
+                        className="aspect-square bg-gradient-to-tr from-[#8a173f]/20 to-[#03ab9c]/20 rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center relative"
+                    >
+                        {/* Animated shimmer overlay */}
+                        <motion.div
+                            animate={{ x: ["-100%", "200%"] }}
+                            transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 3, ease: "easeInOut" }}
+                            className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 pointer-events-none z-10"
+                        />
+
+                        {/* Rotating ring */}
+                        <motion.div
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 12, repeat: Infinity, ease: "linear" }}
+                            className="absolute w-72 h-72 rounded-full border-2 border-dashed border-[#03ab9c]/30 pointer-events-none"
+                        />
+                        <motion.div
+                            animate={{ rotate: -360 }}
+                            transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+                            className="absolute w-56 h-56 rounded-full border border-[#8a173f]/20 pointer-events-none"
+                        />
+
+                        {/* Pulsing dots */}
+                        {[...Array(4)].map((_, i) => (
+                            <motion.div
+                                key={i}
+                                animate={{ scale: [0, 1.5, 0], opacity: [0, 0.7, 0] }}
+                                transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.6, ease: "easeOut" }}
+                                className="absolute w-3 h-3 rounded-full bg-[#03ab9c]/60"
+                                style={{
+                                    top: `${[20, 75, 15, 80][i]}%`,
+                                    left: `${[15, 80, 75, 20][i]}%`,
+                                }}
+                            />
+                        ))}
+
+                        <div className="text-center p-12 relative z-20">
+                            {/* Year with count-up feel via staggered letters */}
+                            <motion.h3
+                                initial={{ opacity: 0, y: 40, scale: 0.5 }}
+                                animate={{ opacity: 1, y: 0, scale: 1 }}
+                                transition={{ duration: 0.7, delay: 0.3, type: "spring", stiffness: 120 }}
+                                className="text-8xl font-black text-[#006747] mb-4 relative"
+                            >
+                                <motion.span
+                                    animate={{ textShadow: ["0 0 0px #006747", "0 0 20px #006747aa", "0 0 0px #006747"] }}
+                                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                                >
+                                    2026
+                                </motion.span>
+                            </motion.h3>
+
+                            <motion.p
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.6 }}
+                                className="text-2xl font-bold text-gray-800"
+                            >
+                                Leading the Digital Transformation of
+                                <br />
+                                <motion.span
+                                    className="text-[#DA291C] text-4xl inline-block"
+                                    animate={{ scale: [1, 1.05, 1] }}
+                                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                                >
+                                    Barishal
+                                </motion.span>
+                            </motion.p>
                         </div>
-                    </div>
+                    </motion.div>
+                </div>  
                 </div>
             </section>
 
