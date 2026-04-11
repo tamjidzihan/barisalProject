@@ -6,6 +6,9 @@ client/node_modules
 server/node_modules
 /dist
 /dist-ssr
+server/exports
+server/export-to-json.js
+server/import-from-json.js
 
 
 *.local
